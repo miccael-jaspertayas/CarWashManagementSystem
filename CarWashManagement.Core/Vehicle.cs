@@ -9,7 +9,7 @@ namespace CarWashManagement.Core
     public class Vehicle
     {
         // Declaration of the vehicle properties.
-        public string Name { get; set; }
+        public string Type { get; set; }
         public decimal BaseFee { get; set; }
         public decimal OwnerShare {  get; set; }
         public decimal EmployeeShare { get; set; }
@@ -18,9 +18,9 @@ namespace CarWashManagement.Core
         public Vehicle() { }
 
         // Constructor with parameters.
-        public Vehicle(string name, decimal baseFee, decimal ownerShare, decimal employeeShare)
+        public Vehicle(string type, decimal baseFee, decimal ownerShare, decimal employeeShare)
         {
-            Name = name;
+            Type = type;
             BaseFee = baseFee;
             OwnerShare = ownerShare;
             EmployeeShare = employeeShare;

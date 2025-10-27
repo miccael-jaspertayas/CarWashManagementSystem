@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarWashManagement.Core.FileHandlers
 {
+    // File handler class for managing user data in users.txt file.
     public class UserFileHandler : IFileHandler<User>
     {   
         // Get the file path of users.txt using the FilePathManager class.

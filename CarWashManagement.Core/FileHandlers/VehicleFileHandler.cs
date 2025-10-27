@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace CarWashManagement.Core.FileHandlers
 {
+    // File handler class for managing vehicle data in vehicles.txt file.
     public class VehicleFileHandler : IFileHandler<Vehicle>
     {
         private readonly string filePath = FilePathManager.VehiclesFilePath;
 
+        // Method to get all vehicles from the vehicles.txt file.
         public List<Vehicle> Load()
         {
             List<Vehicle> vehicles = new List<Vehicle>();
 
+            // Check if the vehicles.txt file exists, if not, return an empty list.
             if (!File.Exists(filePath))
             {
                 return vehicles;
@@ -32,7 +35,7 @@ namespace CarWashManagement.Core.FileHandlers
                     {
                         Vehicle vehicle = new Vehicle
                         {
-                            Name = parts[0],
+                            Type = parts[0],
                             BaseFee = decimal.Parse(parts[1]),
                             OwnerShare = decimal.Parse(parts[2]),
                             EmployeeShare = decimal.Parse(parts[3])
@@ -47,6 +50,7 @@ namespace CarWashManagement.Core.FileHandlers
             return vehicles;
         }
 
+        // Method to save a list of vehicles to the vehicles.txt file.
         public void Save(List<Vehicle> vehicles)
         {
             List<string> lines = new List<string>();
@@ -54,7 +58,7 @@ namespace CarWashManagement.Core.FileHandlers
             foreach (Vehicle vehicle in vehicles)
             {
                 string line = String.Join("|",
-                    vehicle.Name,
+                    vehicle.Type,
                     vehicle.BaseFee,
                     vehicle.OwnerShare,
                     vehicle.EmployeeShare);

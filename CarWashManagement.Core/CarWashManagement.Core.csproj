@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ServicePricingType.cs" />
     <Compile Include="Expense.cs" />
     <Compile Include="FileHandlers\AuditFileHandler.cs" />
     <Compile Include="FileHandlers\IFileHandler.cs" />
+    <Compile Include="FileHandlers\ServiceFileHandler.cs" />
+    <Compile Include="FileHandlers\TransactionFileHandler.cs" />
     <Compile Include="FileHandlers\UserFileHandler.cs" />
     <Compile Include="FileHandlers\VehicleFileHandler.cs" />
     <Compile Include="FilePathManager.cs" />
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\CarManager.cs" />
+    <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />

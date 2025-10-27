@@ -1,9 +1,10 @@
-﻿using CarWashManagement.Core.FileHandlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarWashManagement.Core.FileHandlers;
+using CarWashManagement.Core.Enums;
 
 namespace CarWashManagement.Core.Managers
 {
@@ -11,14 +12,16 @@ namespace CarWashManagement.Core.Managers
     public class CarManager
     {
         private readonly IFileHandler<Vehicle> vehicleFileHandler;
-        // private readonly IFileHandler<Service> serviceFileHandler;
+        private readonly IFileHandler<Service> serviceFileHandler;
 
-        public CarManager(IFileHandler<Vehicle> vehicleFileHandler)
+        public CarManager(IFileHandler<Vehicle> vehicleFileHandler, IFileHandler<Service> serviceFileHandler)
         {
             this.vehicleFileHandler = vehicleFileHandler;
+            this.serviceFileHandler = serviceFileHandler;
 
-            // Create default data if the vehicle.txt is empty.
+            // Create default data if the vehicles.txt and services.txt is empty.
             InitializeDefaultVehicles();
+            InitializeDefaultServices();
         }
 
         // Method to ensure there is default data for vehicles.
@@ -40,10 +43,35 @@ namespace CarWashManagement.Core.Managers
             }
         }
 
+        // Method to ensure there is default data for services.
+        private void InitializeDefaultServices()
+        {
+            List<Service> services = serviceFileHandler.Load();
+
+            if (!services.Any())
+            {
+                List<Service> defaults = new List<Service>
+                {
+                    new Service("Wax", 0.00m, ServicePricingType.VehicleBaseFeeMultiplier, 1),
+                    new Service("Acid Rain Remover", 0.00m, ServicePricingType.ManualInput),
+                    new Service("Buffing", 0.00m, ServicePricingType.ManualInput),
+                    new Service("Back to Zero", 0.00m, ServicePricingType.ManualInput)
+                };
+
+                serviceFileHandler.Save(defaults);
+            }
+        }
+
         // Method to get the list of vehicles.
         public List<Vehicle> GetVehicles()
         {
             return vehicleFileHandler.Load();
+        }
+
+        // Method to get the list of services.
+        public List<Service> GetServices()
+        {
+            return serviceFileHandler.Load();
         }
     }
 }

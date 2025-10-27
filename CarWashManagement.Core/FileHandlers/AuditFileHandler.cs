@@ -7,6 +7,7 @@ using System.IO;
 
 namespace CarWashManagement.Core.FileHandlers
 {
+    // File handler class for managing audit log events in audit.log file.
     public class AuditFileHandler
     {
         private readonly string filePath = FilePathManager.AuditLogFilePath;

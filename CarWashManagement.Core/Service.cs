@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarWashManagement.Core.Enums;
 
 namespace CarWashManagement.Core
 {
@@ -11,17 +12,21 @@ namespace CarWashManagement.Core
         // Declaration of the transaction properties.
         public string Name { get; set; }
         public decimal Fee { get; set; }
-        public bool IsFixedPrice { get; set; }
+        public ServicePricingType PricingType { get; set; }
+
+        // This is used if the PricingType is VehicleBaseFeeMultiplier.
+        public int Multiplier { get; set; }
 
         // Default constructor.
         public Service() { }
 
-        // Cconstructor with parameters.
-        public Service(string name, decimal fee, bool isFixedPrice)
+        // Constructor with parameters.
+        public Service(string name, decimal fee, ServicePricingType pricingType, int multiplier = 1)
         {
             Name = name;
             Fee = fee;
-            IsFixedPrice = isFixedPrice;
+            PricingType = pricingType;
+            Multiplier = multiplier;
         }
     }
 }
