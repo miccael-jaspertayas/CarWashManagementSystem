@@ -10,29 +10,34 @@ namespace CarWashManagement.Core.Managers
     public class TransactionManager
     {
         private readonly TransactionFileHandler txnFileHandler;
+        private readonly AuditFileHandler auditFileHandler;
         private List<Transaction> transactions;
         private int nextTransactionNumber;
 
-        public TransactionManager(TransactionFileHandler txnFileHandler)
+        public TransactionManager(TransactionFileHandler txnFileHandler, AuditFileHandler auditFileHandler)
         {
             this.txnFileHandler = txnFileHandler;
+            this.auditFileHandler = auditFileHandler;
             transactions = txnFileHandler.LoadAllTransactions();
 
             // Determine the next transaction number based on existing transactions.
             if (transactions.Count == 0)
             {
                 nextTransactionNumber = 1; // Start from 1 if no transactions exist.
-            } else
+            }
+            else
             {
                 // Get the ID of the last transaction.
                 string lastID = transactions.Last().ID;
                 int lastNumber = int.Parse(lastID.Substring(3));
                 nextTransactionNumber = lastNumber + 1;
             }
+
+            this.auditFileHandler = auditFileHandler;
         }
 
         // Method to create a new transaction object and saves it to the transactions.txt file.
-        public Transaction CreateTransaction(string employeeName, Vehicle vehicle, List<Service> services)
+        public Transaction CreateTransaction(string employeeName, Vehicle vehicle, List<Service> services, bool isPaid, string washStatus, decimal discountPercentage, string loggedInUsername)
         {
             Transaction txn = new Transaction
             {
@@ -41,21 +46,39 @@ namespace CarWashManagement.Core.Managers
                 EmployeeName = employeeName,
                 VehicleType = vehicle.Type,
                 BaseFee = vehicle.BaseFee,
-                OwnerShare = vehicle.OwnerShare,
-                EmployeeShare = vehicle.EmployeeShare,
-                IsPaid = false, // Initially mark as unpaid.
-                AdditionalServices = services
+                IsPaid = isPaid,
+                AdditionalServices = services,
+                WashStatus = washStatus,
+                DiscountPercentage = discountPercentage,
+                ServiceTotal = services.Sum(s => s.Fee)
             };
 
-            // Calculate total amount of additional services availed by the customer.
-            decimal servicesTotal = services.Sum(s => s.Fee); 
-            txn.TotalAmount = txn.BaseFee + servicesTotal;  
+            decimal servicesTotal = txn.ServiceTotal;
+            decimal serviceOwnerShare = servicesTotal * 0.50m;
+            decimal serviceEmployeeShare = servicesTotal * 0.50m;
+
+            decimal subTotal = txn.BaseFee + servicesTotal;
+
+            decimal discountAmount = subTotal * discountPercentage;
+            decimal discountLossOwner = discountAmount * 0.50m; // 50% of the loss to owner.
+            decimal discountLossEmployee = discountAmount * 0.50m; // 50% of the loss to employee.
+
+            // Calculate combined shares from vehicle base fee and services.
+            txn.OwnerShare = (vehicle.OwnerShare + serviceOwnerShare) - discountLossOwner;
+            txn.EmployeeShare = (vehicle.EmployeeShare + serviceEmployeeShare) - discountLossEmployee;
+
+
+            txn.TotalAmount = subTotal - discountAmount;  
 
             // Save transaction to file.
             txnFileHandler.SaveTransaction(txn);
 
+            auditFileHandler.LogEvent($"TRANSACTION: {txn.ID} created by user '{loggedInUsername}' for Employee: {txn.EmployeeName}. Amount: {txn.TotalAmount:N2}.");
+
             // Add to in-memory list.
             transactions.Add(txn);
+            
+            nextTransactionNumber++;
 
             return txn;
         }

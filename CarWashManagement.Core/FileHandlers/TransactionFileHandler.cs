@@ -22,18 +22,21 @@ namespace CarWashManagement.Core.FileHandlers
                 // Simplify the list of services into a single string.
                 // Example: "Wax (200.00), Buffing (400.00)".
                 string servicesString = string.Join(",",
-                    txn.AdditionalServices.Select(s => $"{s.Name} ({s.Fee}) [{s.PricingType}] {{{s.Multiplier}}}"));
+                    txn.AdditionalServices.Select(s => $"{s.Name} ({s.Fee:F2}) [{s.PricingType}] {{{s.Multiplier}}}"));
 
                 string line = string.Join("|", 
                     txn.ID,
                     txn.Timestamp.ToString("O"), // Converts timestamp into string in ISO 8601 format.
                     txn.VehicleType,
                     txn.EmployeeName,
-                    txn.BaseFee.ToString(),
-                    txn.OwnerShare.ToString(),
-                    txn.EmployeeShare.ToString(),
-                    txn.TotalAmount.ToString(),
+                    txn.BaseFee.ToString("F2"),
+                    txn.ServiceTotal.ToString("F2"),
+                    txn.OwnerShare.ToString("F2"),
+                    txn.EmployeeShare.ToString("F2"),
+                    txn.TotalAmount.ToString("F2"),
                     txn.IsPaid.ToString(),
+                    txn.WashStatus,
+                    txn.DiscountPercentage.ToString(),
                     servicesString);
 
                 File.AppendAllText(filePath, line + "\n");
@@ -64,8 +67,8 @@ namespace CarWashManagement.Core.FileHandlers
                         // Split the line by '|' delimiter.
                         string[] parts = line.Split('|');
 
-                        // Make sure that it has all 10 properties.
-                        if (parts.Length == 10)
+                        // Make sure that it has all 13 properties.
+                        if (parts.Length == 13)
                         {
                             // Create a new Transaction object.
                             Transaction txn = new Transaction
@@ -75,11 +78,14 @@ namespace CarWashManagement.Core.FileHandlers
                                 VehicleType = parts[2],
                                 EmployeeName = parts[3],
                                 BaseFee = decimal.Parse(parts[4]),
-                                OwnerShare = decimal.Parse(parts[5]),
-                                EmployeeShare = decimal.Parse(parts[6]),
-                                TotalAmount = decimal.Parse(parts[7]),
-                                IsPaid = bool.Parse(parts[8]),
-                                AdditionalServices = ParseServices(parts[9])
+                                ServiceTotal = decimal.Parse(parts[5]),
+                                OwnerShare = decimal.Parse(parts[6]),
+                                EmployeeShare = decimal.Parse(parts[7]),
+                                TotalAmount = decimal.Parse(parts[8]),
+                                IsPaid = bool.Parse(parts[9]),
+                                WashStatus = parts[10],
+                                DiscountPercentage = decimal.Parse(parts[11]),
+                                AdditionalServices = ParseServices(parts[12])
                             };
                             transactions.Add(txn);
                         }
