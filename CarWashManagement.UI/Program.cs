@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarWashManagement.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,14 @@ namespace CarWashManagement.UI
 
             LoginForm loginForm = new LoginForm();
 
-            Application.Run(loginForm);
+            Application.Run(new DashboardForm(new User
+            {
+                Username = "admin",
+                FullName = "Default Administrator",
+                Role = "ADMIN",
+                Status = "ACTIVE",
+                FailedLoginAttempts = 0
+            }));
         }
     }
 }

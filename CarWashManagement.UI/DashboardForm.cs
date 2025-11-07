@@ -85,7 +85,8 @@ namespace CarWashManagement.UI
             // Initialize manager instances.
             carManager = new CarManager(
                 new VehicleFileHandler(),
-                new ServiceFileHandler()
+                new ServiceFileHandler(),
+                new AuditFileHandler()
                 );
             transactionManager = new TransactionManager(
                 new TransactionFileHandler(),
@@ -537,6 +538,7 @@ namespace CarWashManagement.UI
         private void LoadVehicleComboBox()
         {
             // ComboBox configuration
+            cmbVehicleType.DataSource = null; // Reset the DataSource.
             cmbVehicleType.DataSource = vehicleTypes;
             cmbVehicleType.DisplayMember = "Type";
             cmbVehicleType.ValueMember = "Type";
@@ -754,34 +756,53 @@ namespace CarWashManagement.UI
             txtTotalAmount.Text = "0.00";
         }
 
+        // Method to reload all vehicle and service data and refreshes the UI controls.
+        private void RefreshCarManagerData()
+        {
+            // Get the data again from the manager to reflect changes made.
+            vehicleTypes = carManager.GetVehicleTypes();
+            services = carManager.GetServices();
+
+            // Reload the controls.
+            LoadVehicleComboBox();
+            LoadServiceControls();
+        }
+
         // Method that opens the Manage Users form (Admin Only).
         private void ManageUsers_Click(object sender, EventArgs e)
         {
             UserManagementForm userManagementForm = new UserManagementForm();
-
-            // Show the form as a modal dialog.
             userManagementForm.ShowDialog();
         }
 
         // Method that opens the Manage Vehicles form (Admin Only).
         private void ManageVehicles_Click(object sender, EventArgs e)
         {
-            // TODO: Build Vehicle Management Form.
-            MessageBox.Show("Vehicle & Price Management form will open here.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            VehicleManagementForm vehicleManagementForm = new VehicleManagementForm(loggedInUser, carManager);
+            vehicleManagementForm.ShowDialog();
+
+            // After the Vehicle Management Form closes, refresh the dashboard's data in case there are changes.
+            RefreshCarManagerData();
         }
 
         // Method that opens the Manage Services form (Admin Only).
         private void ManageServices_Click(object sender, EventArgs e)
         {
-            // TODO: Build Service Management Form.
-            MessageBox.Show("Service Management form will open here.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ServiceManagementForm serviceManagementForm = new ServiceManagementForm(loggedInUser, carManager);
+            serviceManagementForm.ShowDialog();
+
+            // Refresh the dashboard data in case services were changed
+            RefreshCarManagerData();
         }
 
         // Method that opens the Manage Expenses form (Admin Only).
         private void ManageExpenses_Click(object sender, EventArgs e)
         {
-            // TODO: Build Expense Management Form.
-            MessageBox.Show("Expense Management form will open here.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ExpenseManagementForm expenseManagementForm = new ExpenseManagementForm(loggedInUser);
+            expenseManagementForm.ShowDialog();
+
+            // Refresh daily summary to reflect any changes in expenses (in case I add the expenses in the daily summary in the future).
+            UpdateDailySummary();
         }
 
         // Method that allow users to logout from the main dashboard.
@@ -1049,7 +1070,8 @@ namespace CarWashManagement.UI
                 ((LoginForm)loginForm).ClearFields();
                 loginForm.Show();
             }
-  
+            
+            Console.WriteLine("Car Wash Management System\nMiccael Jasper Tayas\nFinal Project Requirement\nCIS202 - Object Oriented Programming\nNovember 2025\n\nThank you for using the system!");
             base.OnFormClosed(e);
         }
     }

@@ -17,7 +17,6 @@ namespace CarWashManagement.Core
         public Expense()
         {
             Id = Guid.NewGuid();
-            Date = DateTime.Now;
         }
     }
 }

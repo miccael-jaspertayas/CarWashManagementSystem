@@ -228,14 +228,19 @@ namespace CarWashManagement.UI
                 accountManager.DeactivateUser(selectedUser.Username);
                 MessageBox.Show($"User '{selectedUser.Username}' has been deactivated.", "User Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (selectedUser.Status == "INACTIVE")
-            {
-                accountManager.ActivateUser(selectedUser.Username);
-                MessageBox.Show($"User '{selectedUser.Username}' has been activated.", "User Activated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else
             {
-                MessageBox.Show("This user account is locked and cannot be activated/deactivated.", "Action Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                string originalStatus = selectedUser.Status;
+
+                accountManager.ActivateUser(selectedUser.Username);
+
+                if (originalStatus == "LOCKED")
+                {
+                    MessageBox.Show($"User '{selectedUser.Username}' has been unlocked and activated.", "User Unlocked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show($"User '{selectedUser.Username}' has been activated.", "User Activated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
             LoadUserList(); // Refresh the list

@@ -7,6 +7,7 @@ using System.IO;
 
 namespace CarWashManagement.Core.FileHandlers
 {
+    // File handler class for managing expenses in expenses.txt file.
     public class ExpenseFileHandler : IFileHandler<Expense>
     {
         private readonly string filePath = FilePathManager.ExpensesFilePath;
