@@ -70,9 +70,10 @@ namespace CarWashManagement.UI
             // lblSelectMonth
             // 
             this.lblSelectMonth.AutoSize = true;
-            this.lblSelectMonth.Location = new System.Drawing.Point(12, 17);
+            this.lblSelectMonth.Location = new System.Drawing.Point(14, 20);
+            this.lblSelectMonth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelectMonth.Name = "lblSelectMonth";
-            this.lblSelectMonth.Size = new System.Drawing.Size(73, 13);
+            this.lblSelectMonth.Size = new System.Drawing.Size(80, 15);
             this.lblSelectMonth.TabIndex = 0;
             this.lblSelectMonth.Text = "Select Month:";
             // 
@@ -80,38 +81,45 @@ namespace CarWashManagement.UI
             // 
             this.dtpReportDate.CustomFormat = "MMMM yyyy";
             this.dtpReportDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReportDate.Location = new System.Drawing.Point(110, 12);
+            this.dtpReportDate.Location = new System.Drawing.Point(128, 14);
+            this.dtpReportDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dtpReportDate.Name = "dtpReportDate";
-            this.dtpReportDate.Size = new System.Drawing.Size(150, 20);
+            this.dtpReportDate.Size = new System.Drawing.Size(174, 23);
             this.dtpReportDate.TabIndex = 1;
             // 
             // btnGenerateReport
             // 
-            this.btnGenerateReport.Location = new System.Drawing.Point(270, 10);
+            this.btnGenerateReport.Location = new System.Drawing.Point(315, 12);
+            this.btnGenerateReport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(80, 30);
+            this.btnGenerateReport.Size = new System.Drawing.Size(93, 35);
             this.btnGenerateReport.TabIndex = 2;
             this.btnGenerateReport.Text = "Generate";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // btnMonthlyToggle
             // 
             this.btnMonthlyToggle.BackColor = System.Drawing.Color.LightGray;
-            this.btnMonthlyToggle.Location = new System.Drawing.Point(450, 10);
+            this.btnMonthlyToggle.Location = new System.Drawing.Point(525, 12);
+            this.btnMonthlyToggle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnMonthlyToggle.Name = "btnMonthlyToggle";
-            this.btnMonthlyToggle.Size = new System.Drawing.Size(75, 30);
+            this.btnMonthlyToggle.Size = new System.Drawing.Size(88, 35);
             this.btnMonthlyToggle.TabIndex = 3;
             this.btnMonthlyToggle.Text = "Monthly";
             this.btnMonthlyToggle.UseVisualStyleBackColor = false;
+            this.btnMonthlyToggle.Click += new System.EventHandler(this.btnMonthlyToggle_Click);
             // 
             // btnYearlyToggle
             // 
-            this.btnYearlyToggle.Location = new System.Drawing.Point(531, 10);
+            this.btnYearlyToggle.Location = new System.Drawing.Point(620, 12);
+            this.btnYearlyToggle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnYearlyToggle.Name = "btnYearlyToggle";
-            this.btnYearlyToggle.Size = new System.Drawing.Size(75, 30);
+            this.btnYearlyToggle.Size = new System.Drawing.Size(88, 35);
             this.btnYearlyToggle.TabIndex = 4;
             this.btnYearlyToggle.Text = "Yearly";
             this.btnYearlyToggle.UseVisualStyleBackColor = true;
+            this.btnYearlyToggle.Click += new System.EventHandler(this.btnYearlyToggle_Click);
             // 
             // pnlReport
             // 
@@ -134,18 +142,20 @@ namespace CarWashManagement.UI
             this.pnlReport.Controls.Add(this.lblReportTotalWashes);
             this.pnlReport.Controls.Add(this.txtReportTotalRevenue);
             this.pnlReport.Controls.Add(this.lblReportTotalRevenue);
-            this.pnlReport.Location = new System.Drawing.Point(15, 50);
+            this.pnlReport.Location = new System.Drawing.Point(18, 58);
+            this.pnlReport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlReport.Name = "pnlReport";
-            this.pnlReport.Size = new System.Drawing.Size(590, 320);
+            this.pnlReport.Size = new System.Drawing.Size(688, 369);
             this.pnlReport.TabIndex = 5;
             // 
             // txtReportNetProfit
             // 
             this.txtReportNetProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReportNetProfit.Location = new System.Drawing.Point(300, 262);
+            this.txtReportNetProfit.Location = new System.Drawing.Point(350, 302);
+            this.txtReportNetProfit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportNetProfit.Name = "txtReportNetProfit";
             this.txtReportNetProfit.ReadOnly = true;
-            this.txtReportNetProfit.Size = new System.Drawing.Size(180, 20);
+            this.txtReportNetProfit.Size = new System.Drawing.Size(209, 20);
             this.txtReportNetProfit.TabIndex = 17;
             this.txtReportNetProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -153,7 +163,8 @@ namespace CarWashManagement.UI
             // 
             this.lblReportNetProfit.AutoSize = true;
             this.lblReportNetProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReportNetProfit.Location = new System.Drawing.Point(297, 242);
+            this.lblReportNetProfit.Location = new System.Drawing.Point(346, 279);
+            this.lblReportNetProfit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportNetProfit.Name = "lblReportNetProfit";
             this.lblReportNetProfit.Size = new System.Drawing.Size(113, 13);
             this.lblReportNetProfit.TabIndex = 16;
@@ -161,137 +172,152 @@ namespace CarWashManagement.UI
             // 
             // txtReportTotalExpenses
             // 
-            this.txtReportTotalExpenses.Location = new System.Drawing.Point(15, 262);
+            this.txtReportTotalExpenses.Location = new System.Drawing.Point(18, 302);
+            this.txtReportTotalExpenses.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportTotalExpenses.Name = "txtReportTotalExpenses";
             this.txtReportTotalExpenses.ReadOnly = true;
-            this.txtReportTotalExpenses.Size = new System.Drawing.Size(180, 20);
+            this.txtReportTotalExpenses.Size = new System.Drawing.Size(209, 23);
             this.txtReportTotalExpenses.TabIndex = 15;
             this.txtReportTotalExpenses.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportTotalExpenses
             // 
             this.lblReportTotalExpenses.AutoSize = true;
-            this.lblReportTotalExpenses.Location = new System.Drawing.Point(12, 242);
+            this.lblReportTotalExpenses.Location = new System.Drawing.Point(14, 279);
+            this.lblReportTotalExpenses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportTotalExpenses.Name = "lblReportTotalExpenses";
-            this.lblReportTotalExpenses.Size = new System.Drawing.Size(84, 13);
+            this.lblReportTotalExpenses.Size = new System.Drawing.Size(86, 15);
             this.lblReportTotalExpenses.TabIndex = 14;
             this.lblReportTotalExpenses.Text = "Total Expenses:";
             // 
             // txtReportHighestDay
             // 
-            this.txtReportHighestDay.Location = new System.Drawing.Point(15, 207);
+            this.txtReportHighestDay.Location = new System.Drawing.Point(18, 239);
+            this.txtReportHighestDay.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportHighestDay.Name = "txtReportHighestDay";
             this.txtReportHighestDay.ReadOnly = true;
-            this.txtReportHighestDay.Size = new System.Drawing.Size(180, 20);
+            this.txtReportHighestDay.Size = new System.Drawing.Size(209, 23);
             this.txtReportHighestDay.TabIndex = 13;
             this.txtReportHighestDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportHighestDay
             // 
             this.lblReportHighestDay.AutoSize = true;
-            this.lblReportHighestDay.Location = new System.Drawing.Point(12, 187);
+            this.lblReportHighestDay.Location = new System.Drawing.Point(14, 216);
+            this.lblReportHighestDay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportHighestDay.Name = "lblReportHighestDay";
-            this.lblReportHighestDay.Size = new System.Drawing.Size(113, 13);
+            this.lblReportHighestDay.Size = new System.Drawing.Size(122, 15);
             this.lblReportHighestDay.TabIndex = 12;
             this.lblReportHighestDay.Text = "Highest Revenue Day:";
             // 
             // txtReportMostService
             // 
-            this.txtReportMostService.Location = new System.Drawing.Point(300, 152);
+            this.txtReportMostService.Location = new System.Drawing.Point(350, 175);
+            this.txtReportMostService.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportMostService.Name = "txtReportMostService";
             this.txtReportMostService.ReadOnly = true;
-            this.txtReportMostService.Size = new System.Drawing.Size(180, 20);
+            this.txtReportMostService.Size = new System.Drawing.Size(209, 23);
             this.txtReportMostService.TabIndex = 11;
             this.txtReportMostService.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportMostService
             // 
             this.lblReportMostService.AutoSize = true;
-            this.lblReportMostService.Location = new System.Drawing.Point(297, 132);
+            this.lblReportMostService.Location = new System.Drawing.Point(346, 152);
+            this.lblReportMostService.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportMostService.Name = "lblReportMostService";
-            this.lblReportMostService.Size = new System.Drawing.Size(110, 13);
+            this.lblReportMostService.Size = new System.Drawing.Size(119, 15);
             this.lblReportMostService.TabIndex = 10;
             this.lblReportMostService.Text = "Most Availed Service:";
             // 
             // txtReportMostWashed
             // 
-            this.txtReportMostWashed.Location = new System.Drawing.Point(15, 152);
+            this.txtReportMostWashed.Location = new System.Drawing.Point(18, 175);
+            this.txtReportMostWashed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportMostWashed.Name = "txtReportMostWashed";
             this.txtReportMostWashed.ReadOnly = true;
-            this.txtReportMostWashed.Size = new System.Drawing.Size(180, 20);
+            this.txtReportMostWashed.Size = new System.Drawing.Size(209, 23);
             this.txtReportMostWashed.TabIndex = 9;
             this.txtReportMostWashed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportMostWashed
             // 
             this.lblReportMostWashed.AutoSize = true;
-            this.lblReportMostWashed.Location = new System.Drawing.Point(12, 132);
+            this.lblReportMostWashed.Location = new System.Drawing.Point(14, 152);
+            this.lblReportMostWashed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportMostWashed.Name = "lblReportMostWashed";
-            this.lblReportMostWashed.Size = new System.Drawing.Size(113, 13);
+            this.lblReportMostWashed.Size = new System.Drawing.Size(122, 15);
             this.lblReportMostWashed.TabIndex = 8;
             this.lblReportMostWashed.Text = "Most Washed Vehicle:";
             // 
             // txtReportEmpShare
             // 
-            this.txtReportEmpShare.Location = new System.Drawing.Point(300, 97);
+            this.txtReportEmpShare.Location = new System.Drawing.Point(350, 112);
+            this.txtReportEmpShare.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportEmpShare.Name = "txtReportEmpShare";
             this.txtReportEmpShare.ReadOnly = true;
-            this.txtReportEmpShare.Size = new System.Drawing.Size(180, 20);
+            this.txtReportEmpShare.Size = new System.Drawing.Size(209, 23);
             this.txtReportEmpShare.TabIndex = 7;
             this.txtReportEmpShare.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportEmpShare
             // 
             this.lblReportEmpShare.AutoSize = true;
-            this.lblReportEmpShare.Location = new System.Drawing.Point(297, 77);
+            this.lblReportEmpShare.Location = new System.Drawing.Point(346, 89);
+            this.lblReportEmpShare.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportEmpShare.Name = "lblReportEmpShare";
-            this.lblReportEmpShare.Size = new System.Drawing.Size(120, 13);
+            this.lblReportEmpShare.Size = new System.Drawing.Size(122, 15);
             this.lblReportEmpShare.TabIndex = 6;
             this.lblReportEmpShare.Text = "Total Employee Share:";
             // 
             // txtReportOwnerShare
             // 
-            this.txtReportOwnerShare.Location = new System.Drawing.Point(15, 97);
+            this.txtReportOwnerShare.Location = new System.Drawing.Point(18, 112);
+            this.txtReportOwnerShare.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportOwnerShare.Name = "txtReportOwnerShare";
             this.txtReportOwnerShare.ReadOnly = true;
-            this.txtReportOwnerShare.Size = new System.Drawing.Size(180, 20);
+            this.txtReportOwnerShare.Size = new System.Drawing.Size(209, 23);
             this.txtReportOwnerShare.TabIndex = 5;
             this.txtReportOwnerShare.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportOwnerShare
             // 
             this.lblReportOwnerShare.AutoSize = true;
-            this.lblReportOwnerShare.Location = new System.Drawing.Point(12, 77);
+            this.lblReportOwnerShare.Location = new System.Drawing.Point(14, 89);
+            this.lblReportOwnerShare.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportOwnerShare.Name = "lblReportOwnerShare";
-            this.lblReportOwnerShare.Size = new System.Drawing.Size(104, 13);
+            this.lblReportOwnerShare.Size = new System.Drawing.Size(105, 15);
             this.lblReportOwnerShare.TabIndex = 4;
             this.lblReportOwnerShare.Text = "Total Owner Share:";
             // 
             // txtReportTotalWashes
             // 
-            this.txtReportTotalWashes.Location = new System.Drawing.Point(300, 42);
+            this.txtReportTotalWashes.Location = new System.Drawing.Point(350, 48);
+            this.txtReportTotalWashes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportTotalWashes.Name = "txtReportTotalWashes";
             this.txtReportTotalWashes.ReadOnly = true;
-            this.txtReportTotalWashes.Size = new System.Drawing.Size(180, 20);
+            this.txtReportTotalWashes.Size = new System.Drawing.Size(209, 23);
             this.txtReportTotalWashes.TabIndex = 3;
             this.txtReportTotalWashes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblReportTotalWashes
             // 
             this.lblReportTotalWashes.AutoSize = true;
-            this.lblReportTotalWashes.Location = new System.Drawing.Point(297, 22);
+            this.lblReportTotalWashes.Location = new System.Drawing.Point(346, 25);
+            this.lblReportTotalWashes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportTotalWashes.Name = "lblReportTotalWashes";
-            this.lblReportTotalWashes.Size = new System.Drawing.Size(77, 13);
+            this.lblReportTotalWashes.Size = new System.Drawing.Size(78, 15);
             this.lblReportTotalWashes.TabIndex = 2;
             this.lblReportTotalWashes.Text = "Total Washes:";
             // 
             // txtReportTotalRevenue
             // 
             this.txtReportTotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReportTotalRevenue.Location = new System.Drawing.Point(15, 42);
+            this.txtReportTotalRevenue.Location = new System.Drawing.Point(18, 48);
+            this.txtReportTotalRevenue.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtReportTotalRevenue.Name = "txtReportTotalRevenue";
             this.txtReportTotalRevenue.ReadOnly = true;
-            this.txtReportTotalRevenue.Size = new System.Drawing.Size(180, 20);
+            this.txtReportTotalRevenue.Size = new System.Drawing.Size(209, 20);
             this.txtReportTotalRevenue.TabIndex = 1;
             this.txtReportTotalRevenue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -299,9 +325,10 @@ namespace CarWashManagement.UI
             // 
             this.lblReportTotalRevenue.AutoSize = true;
             this.lblReportTotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReportTotalRevenue.Location = new System.Drawing.Point(12, 22);
+            this.lblReportTotalRevenue.Location = new System.Drawing.Point(14, 25);
+            this.lblReportTotalRevenue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReportTotalRevenue.Name = "lblReportTotalRevenue";
-            this.lblReportTotalRevenue.Size = new System.Drawing.Size(96, 13);
+            this.lblReportTotalRevenue.Size = new System.Drawing.Size(95, 13);
             this.lblReportTotalRevenue.TabIndex = 0;
             this.lblReportTotalRevenue.Text = "Total Revenue:";
             // 
@@ -309,7 +336,8 @@ namespace CarWashManagement.UI
             // 
             this.lblEntries.AutoSize = true;
             this.lblEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntries.Location = new System.Drawing.Point(12, 385);
+            this.lblEntries.Location = new System.Drawing.Point(14, 444);
+            this.lblEntries.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEntries.Name = "lblEntries";
             this.lblEntries.Size = new System.Drawing.Size(46, 13);
             this.lblEntries.TabIndex = 6;
@@ -327,9 +355,10 @@ namespace CarWashManagement.UI
             this.lsvMonthlyEntries.FullRowSelect = true;
             this.lsvMonthlyEntries.GridLines = true;
             this.lsvMonthlyEntries.HideSelection = false;
-            this.lsvMonthlyEntries.Location = new System.Drawing.Point(15, 410);
+            this.lsvMonthlyEntries.Location = new System.Drawing.Point(18, 473);
+            this.lsvMonthlyEntries.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lsvMonthlyEntries.Name = "lsvMonthlyEntries";
-            this.lsvMonthlyEntries.Size = new System.Drawing.Size(590, 285);
+            this.lsvMonthlyEntries.Size = new System.Drawing.Size(688, 328);
             this.lsvMonthlyEntries.TabIndex = 7;
             this.lsvMonthlyEntries.UseCompatibleStateImageBehavior = false;
             this.lsvMonthlyEntries.View = System.Windows.Forms.View.Details;
@@ -368,9 +397,9 @@ namespace CarWashManagement.UI
             // 
             // MonthlyReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 711);
+            this.ClientSize = new System.Drawing.Size(728, 820);
             this.Controls.Add(this.lsvMonthlyEntries);
             this.Controls.Add(this.lblEntries);
             this.Controls.Add(this.pnlReport);
@@ -379,12 +408,14 @@ namespace CarWashManagement.UI
             this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.dtpReportDate);
             this.Controls.Add(this.lblSelectMonth);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MonthlyReportForm";
             this.Text = "Monthly/Yearly Report Dashboard";
             this.pnlReport.ResumeLayout(false);
             this.pnlReport.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

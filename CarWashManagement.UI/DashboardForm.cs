@@ -183,10 +183,13 @@ namespace CarWashManagement.UI
             decimal subTotal = baseFee + servicesTotal;
             decimal discountPercentage = 0.00m;
 
-            if (cmbDiscount.SelectedItem.ToString() == "PWD" || cmbDiscount.SelectedItem.ToString() == "Senior")
-            {
-                discountPercentage = 0.20m; // 20% discount
-            }
+            if (cmbDiscount.SelectedItem != null)
+                if (cmbDiscount.SelectedItem.ToString() == "PWD" || cmbDiscount.SelectedItem.ToString() == "Senior")
+                {
+                    discountPercentage = 0.20m; // 20% discount
+                }
+            
+
 
             decimal discountAmount = subTotal * discountPercentage;
 

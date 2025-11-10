@@ -59,9 +59,10 @@ namespace CarWashManagement.UI
             this.lsvExpenses.FullRowSelect = true;
             this.lsvExpenses.GridLines = true;
             this.lsvExpenses.HideSelection = false;
-            this.lsvExpenses.Location = new System.Drawing.Point(15, 15);
+            this.lsvExpenses.Location = new System.Drawing.Point(18, 17);
+            this.lsvExpenses.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lsvExpenses.Name = "lsvExpenses";
-            this.lsvExpenses.Size = new System.Drawing.Size(450, 200);
+            this.lsvExpenses.Size = new System.Drawing.Size(524, 230);
             this.lsvExpenses.TabIndex = 0;
             this.lsvExpenses.UseCompatibleStateImageBehavior = false;
             this.lsvExpenses.View = System.Windows.Forms.View.Details;
@@ -85,67 +86,75 @@ namespace CarWashManagement.UI
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(12, 230);
+            this.lblDate.Location = new System.Drawing.Point(14, 265);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(33, 13);
+            this.lblDate.Size = new System.Drawing.Size(34, 15);
             this.lblDate.TabIndex = 1;
             this.lblDate.Text = "Date:";
             // 
             // dtpExpenseDate
             // 
             this.dtpExpenseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpenseDate.Location = new System.Drawing.Point(15, 250);
+            this.dtpExpenseDate.Location = new System.Drawing.Point(18, 288);
+            this.dtpExpenseDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dtpExpenseDate.Name = "dtpExpenseDate";
-            this.dtpExpenseDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpExpenseDate.Size = new System.Drawing.Size(233, 23);
             this.dtpExpenseDate.TabIndex = 2;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(12, 280);
+            this.lblDescription.Location = new System.Drawing.Point(14, 323);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(63, 13);
+            this.lblDescription.Size = new System.Drawing.Size(70, 15);
             this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "Description:";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(15, 300);
+            this.txtDescription.Location = new System.Drawing.Point(18, 346);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(300, 20);
+            this.txtDescription.Size = new System.Drawing.Size(349, 23);
             this.txtDescription.TabIndex = 4;
             // 
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(327, 280);
+            this.lblAmount.Location = new System.Drawing.Point(382, 323);
+            this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(46, 13);
+            this.lblAmount.Size = new System.Drawing.Size(54, 15);
             this.lblAmount.TabIndex = 5;
             this.lblAmount.Text = "Amount:";
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(330, 300);
+            this.txtAmount.Location = new System.Drawing.Point(385, 346);
+            this.txtAmount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(135, 20);
+            this.txtAmount.Size = new System.Drawing.Size(157, 23);
             this.txtAmount.TabIndex = 6;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnAddExpense
             // 
-            this.btnAddExpense.Location = new System.Drawing.Point(330, 340);
+            this.btnAddExpense.Location = new System.Drawing.Point(385, 392);
+            this.btnAddExpense.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddExpense.Name = "btnAddExpense";
-            this.btnAddExpense.Size = new System.Drawing.Size(135, 30);
+            this.btnAddExpense.Size = new System.Drawing.Size(158, 35);
             this.btnAddExpense.TabIndex = 7;
             this.btnAddExpense.Text = "Add Expense";
             this.btnAddExpense.UseVisualStyleBackColor = true;
+            this.btnAddExpense.Click += new System.EventHandler(this.btnAddExpense_Click);
             // 
             // ExpenseManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 381);
+            this.ClientSize = new System.Drawing.Size(565, 440);
             this.Controls.Add(this.btnAddExpense);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.lblAmount);
@@ -154,6 +163,7 @@ namespace CarWashManagement.UI
             this.Controls.Add(this.dtpExpenseDate);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lsvExpenses);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ExpenseManagementForm";
             this.Text = "Expense Management";
             this.ResumeLayout(false);

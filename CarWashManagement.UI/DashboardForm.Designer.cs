@@ -108,6 +108,7 @@ namespace CarWashManagement.UI
             this.logoutButton.TabIndex = 0;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // mainMenu
             // 
@@ -138,30 +139,35 @@ namespace CarWashManagement.UI
             this.manageUsersToolStripMenuItem.Name = "manageUsersToolStripMenuItem";
             this.manageUsersToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.manageUsersToolStripMenuItem.Text = "Manage Users";
+            this.manageUsersToolStripMenuItem.Click += new System.EventHandler(this.ManageUsers_Click);
             // 
             // manageVehiclesToolStripMenuItem
             // 
             this.manageVehiclesToolStripMenuItem.Name = "manageVehiclesToolStripMenuItem";
             this.manageVehiclesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.manageVehiclesToolStripMenuItem.Text = "Manage Vehicles";
+            this.manageVehiclesToolStripMenuItem.Click += new System.EventHandler(this.ManageVehicles_Click);
             // 
             // manageServicesToolStripMenuItem
             // 
             this.manageServicesToolStripMenuItem.Name = "manageServicesToolStripMenuItem";
             this.manageServicesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.manageServicesToolStripMenuItem.Text = "Manage Services";
+            this.manageServicesToolStripMenuItem.Click += new System.EventHandler(this.ManageServices_Click);
             // 
             // manageExpensesToolStripMenuItem
             // 
             this.manageExpensesToolStripMenuItem.Name = "manageExpensesToolStripMenuItem";
             this.manageExpensesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.manageExpensesToolStripMenuItem.Text = "Manage Expenses";
+            this.manageExpensesToolStripMenuItem.Click += new System.EventHandler(this.ManageExpenses_Click);
             // 
             // monthlyReportToolStripMenuItem
             // 
             this.monthlyReportToolStripMenuItem.Name = "monthlyReportToolStripMenuItem";
             this.monthlyReportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.monthlyReportToolStripMenuItem.Text = "Monthly Report";
+            this.monthlyReportToolStripMenuItem.Click += new System.EventHandler(this.ShowMonthlyReport_Click);
             // 
             // welcomeLabel
             // 
@@ -183,6 +189,7 @@ namespace CarWashManagement.UI
             this.lnkChangePassword.TabIndex = 3;
             this.lnkChangePassword.TabStop = true;
             this.lnkChangePassword.Text = "Change Password";
+            this.lnkChangePassword.Click += new System.EventHandler(this.lnkChangePassword_Click);
             // 
             // washEntryPanel
             // 
@@ -224,8 +231,9 @@ namespace CarWashManagement.UI
             this.btnAddTransaction.Name = "btnAddTransaction";
             this.btnAddTransaction.Size = new System.Drawing.Size(315, 29);
             this.btnAddTransaction.TabIndex = 23;
-            this.btnAddTransaction.Text = "Add Entry";
+            this.btnAddTransaction.Text = "Add Transaction";
             this.btnAddTransaction.UseVisualStyleBackColor = true;
+            this.btnAddTransaction.Click += new System.EventHandler(this.btnAddTransaction_Click);
             // 
             // txtTotalAmount
             // 
@@ -435,6 +443,7 @@ namespace CarWashManagement.UI
             this.cmbVehicleType.Name = "cmbVehicleType";
             this.cmbVehicleType.Size = new System.Drawing.Size(198, 23);
             this.cmbVehicleType.TabIndex = 3;
+            this.cmbVehicleType.SelectedIndexChanged += new System.EventHandler(this.cmbVehicleType_SelectedIndexChanged);
             // 
             // lblVehicleType
             // 
@@ -541,12 +550,14 @@ namespace CarWashManagement.UI
             this.togglePaidStatusToolStripMenuItem.Name = "togglePaidStatusToolStripMenuItem";
             this.togglePaidStatusToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.togglePaidStatusToolStripMenuItem.Text = "Toggle Paid Status";
+            this.togglePaidStatusToolStripMenuItem.Click += new System.EventHandler(this.TogglePaidStatus_Click);
             // 
             // toggleWashStatusToolStripMenuItem
             // 
             this.toggleWashStatusToolStripMenuItem.Name = "toggleWashStatusToolStripMenuItem";
             this.toggleWashStatusToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.toggleWashStatusToolStripMenuItem.Text = "Toggle Wash Status";
+            this.toggleWashStatusToolStripMenuItem.Click += new System.EventHandler(this.ToggleWashStatus_Click);
             // 
             // dailySummaryPanel
             // 

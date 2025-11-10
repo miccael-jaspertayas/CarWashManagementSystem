@@ -59,9 +59,10 @@ namespace CarWashManagement.UI
             this.columnHeader5});
             this.lsvUsers.FullRowSelect = true;
             this.lsvUsers.HideSelection = false;
-            this.lsvUsers.Location = new System.Drawing.Point(15, 15);
+            this.lsvUsers.Location = new System.Drawing.Point(18, 17);
+            this.lsvUsers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lsvUsers.Name = "lsvUsers";
-            this.lsvUsers.Size = new System.Drawing.Size(550, 200);
+            this.lsvUsers.Size = new System.Drawing.Size(641, 230);
             this.lsvUsers.TabIndex = 0;
             this.lsvUsers.UseCompatibleStateImageBehavior = false;
             this.lsvUsers.View = System.Windows.Forms.View.Details;
@@ -94,58 +95,65 @@ namespace CarWashManagement.UI
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(12, 233);
+            this.lblUsername.Location = new System.Drawing.Point(14, 269);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.Size = new System.Drawing.Size(63, 15);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Username:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(80, 230);
+            this.txtUsername.Location = new System.Drawing.Point(93, 265);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(120, 20);
+            this.txtUsername.Size = new System.Drawing.Size(139, 23);
             this.txtUsername.TabIndex = 2;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(212, 233);
+            this.lblPassword.Location = new System.Drawing.Point(247, 269);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblPassword.Size = new System.Drawing.Size(60, 15);
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password:";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(280, 230);
+            this.txtPassword.Location = new System.Drawing.Point(327, 265);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(120, 20);
+            this.txtPassword.Size = new System.Drawing.Size(139, 23);
             this.txtPassword.TabIndex = 4;
             // 
             // lblFullName
             // 
             this.lblFullName.AutoSize = true;
-            this.lblFullName.Location = new System.Drawing.Point(12, 263);
+            this.lblFullName.Location = new System.Drawing.Point(14, 303);
+            this.lblFullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(57, 13);
+            this.lblFullName.Size = new System.Drawing.Size(64, 15);
             this.lblFullName.TabIndex = 5;
             this.lblFullName.Text = "Full Name:";
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(80, 260);
+            this.txtFullName.Location = new System.Drawing.Point(93, 300);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(120, 20);
+            this.txtFullName.Size = new System.Drawing.Size(139, 23);
             this.txtFullName.TabIndex = 6;
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(212, 263);
+            this.lblRole.Location = new System.Drawing.Point(247, 303);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(32, 13);
+            this.lblRole.Size = new System.Drawing.Size(33, 15);
             this.lblRole.TabIndex = 7;
             this.lblRole.Text = "Role:";
             // 
@@ -156,34 +164,39 @@ namespace CarWashManagement.UI
             this.cmbRole.Items.AddRange(new object[] {
             "Admin",
             "Recorder"});
-            this.cmbRole.Location = new System.Drawing.Point(280, 260);
+            this.cmbRole.Location = new System.Drawing.Point(327, 300);
+            this.cmbRole.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(120, 21);
+            this.cmbRole.Size = new System.Drawing.Size(139, 23);
             this.cmbRole.TabIndex = 8;
             // 
             // btnCreateUser
             // 
-            this.btnCreateUser.Location = new System.Drawing.Point(420, 228);
+            this.btnCreateUser.Location = new System.Drawing.Point(490, 263);
+            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(140, 25);
+            this.btnCreateUser.Size = new System.Drawing.Size(163, 29);
             this.btnCreateUser.TabIndex = 9;
             this.btnCreateUser.Text = "Create User";
             this.btnCreateUser.UseVisualStyleBackColor = true;
+            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
             // 
             // btnToggleStatus
             // 
-            this.btnToggleStatus.Location = new System.Drawing.Point(420, 258);
+            this.btnToggleStatus.Location = new System.Drawing.Point(490, 298);
+            this.btnToggleStatus.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnToggleStatus.Name = "btnToggleStatus";
-            this.btnToggleStatus.Size = new System.Drawing.Size(140, 25);
+            this.btnToggleStatus.Size = new System.Drawing.Size(163, 29);
             this.btnToggleStatus.TabIndex = 10;
             this.btnToggleStatus.Text = "Activate/Deactivate Selected";
             this.btnToggleStatus.UseVisualStyleBackColor = true;
+            this.btnToggleStatus.Click += new System.EventHandler(this.btnToggleStatus_Click);
             // 
             // UserManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(681, 417);
             this.Controls.Add(this.btnToggleStatus);
             this.Controls.Add(this.btnCreateUser);
             this.Controls.Add(this.cmbRole);
@@ -195,6 +208,7 @@ namespace CarWashManagement.UI
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lsvUsers);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UserManagementForm";
             this.Text = "User Management";
             this.ResumeLayout(false);

@@ -54,23 +54,21 @@ namespace CarWashManagement.UI
             // 
             this.lsvServices.FullRowSelect = true;
             this.lsvServices.GridLines = true;
+            this.lsvServices.HideSelection = false;
             this.lsvServices.Location = new System.Drawing.Point(15, 15);
             this.lsvServices.Name = "lsvServices";
             this.lsvServices.Size = new System.Drawing.Size(550, 200);
             this.lsvServices.TabIndex = 0;
             this.lsvServices.UseCompatibleStateImageBehavior = false;
             this.lsvServices.View = System.Windows.Forms.View.Details;
-            this.lsvServices.Columns.Add("Service Name", 150);
-            this.lsvServices.Columns.Add("Pricing Type", 140);
-            this.lsvServices.Columns.Add("Fee", 120, System.Windows.Forms.HorizontalAlignment.Right);
-            this.lsvServices.Columns.Add("Multiplier", 120, System.Windows.Forms.HorizontalAlignment.Right);
+            this.lsvServices.SelectedIndexChanged += new System.EventHandler(this.lsvServices_SelectedIndexChanged);
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(15, 240);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(87, 15);
+            this.lblName.Size = new System.Drawing.Size(82, 15);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Service Name:";
             // 
@@ -86,7 +84,7 @@ namespace CarWashManagement.UI
             this.lblPricingType.AutoSize = true;
             this.lblPricingType.Location = new System.Drawing.Point(15, 275);
             this.lblPricingType.Name = "lblPricingType";
-            this.lblPricingType.Size = new System.Drawing.Size(75, 15);
+            this.lblPricingType.Size = new System.Drawing.Size(74, 15);
             this.lblPricingType.TabIndex = 3;
             this.lblPricingType.Text = "Pricing Type:";
             // 
@@ -98,6 +96,7 @@ namespace CarWashManagement.UI
             this.cmbPricingType.Name = "cmbPricingType";
             this.cmbPricingType.Size = new System.Drawing.Size(150, 23);
             this.cmbPricingType.TabIndex = 4;
+            this.cmbPricingType.SelectedIndexChanged += new System.EventHandler(this.cmbPricingType_SelectedIndexChanged);
             // 
             // lblFee
             // 
@@ -121,7 +120,7 @@ namespace CarWashManagement.UI
             this.lblMultiplier.AutoSize = true;
             this.lblMultiplier.Location = new System.Drawing.Point(15, 345);
             this.lblMultiplier.Name = "lblMultiplier";
-            this.lblMultiplier.Size = new System.Drawing.Size(63, 15);
+            this.lblMultiplier.Size = new System.Drawing.Size(61, 15);
             this.lblMultiplier.TabIndex = 7;
             this.lblMultiplier.Text = "Multiplier:";
             // 
@@ -141,6 +140,7 @@ namespace CarWashManagement.UI
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -150,6 +150,7 @@ namespace CarWashManagement.UI
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update Selected";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -159,6 +160,7 @@ namespace CarWashManagement.UI
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete Selected";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
@@ -168,6 +170,7 @@ namespace CarWashManagement.UI
             this.btnClear.TabIndex = 12;
             this.btnClear.Text = "Clear Form";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // ServiceManagementForm
             // 
@@ -189,6 +192,7 @@ namespace CarWashManagement.UI
             this.Text = "Service Management";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

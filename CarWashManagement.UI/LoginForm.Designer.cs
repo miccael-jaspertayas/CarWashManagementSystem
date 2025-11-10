@@ -45,54 +45,61 @@ namespace CarWashManagement.UI
             // 
             // usernameLabel
             // 
-            this.usernameLabel.Location = new System.Drawing.Point(30, 30);
+            this.usernameLabel.Location = new System.Drawing.Point(35, 35);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(70, 20);
+            this.usernameLabel.Size = new System.Drawing.Size(82, 23);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "Username:";
             // 
             // usernameTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(110, 30);
+            this.usernameTextBox.Location = new System.Drawing.Point(128, 35);
+            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(140, 20);
+            this.usernameTextBox.Size = new System.Drawing.Size(163, 23);
             this.usernameTextBox.TabIndex = 1;
             // 
             // passwordLabel
             // 
-            this.passwordLabel.Location = new System.Drawing.Point(30, 70);
+            this.passwordLabel.Location = new System.Drawing.Point(35, 81);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(70, 20);
+            this.passwordLabel.Size = new System.Drawing.Size(82, 23);
             this.passwordLabel.TabIndex = 2;
             this.passwordLabel.Text = "Password:";
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(110, 70);
+            this.passwordTextBox.Location = new System.Drawing.Point(128, 81);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(140, 20);
+            this.passwordTextBox.Size = new System.Drawing.Size(163, 23);
             this.passwordTextBox.TabIndex = 3;
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(110, 110);
+            this.loginButton.Location = new System.Drawing.Point(128, 127);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 30);
+            this.loginButton.Size = new System.Drawing.Size(88, 35);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 161);
+            this.ClientSize = new System.Drawing.Size(331, 186);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.usernameLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "LoginForm";
             this.Text = "Car Wash Management - Login";
             this.ResumeLayout(false);
