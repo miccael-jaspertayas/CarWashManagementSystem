@@ -20,14 +20,6 @@ namespace CarWashManagement.UI
             LoginForm loginForm = new LoginForm();
 
             Application.Run(loginForm);
-            /*Application.Run(new DashboardForm(new User
-            {
-                Username = "admin",
-                FullName = "Default Administrator",
-                Role = "ADMIN",
-                Status = "ACTIVE",
-                FailedLoginAttempts = 0
-            }));*/
         }
     }
 }

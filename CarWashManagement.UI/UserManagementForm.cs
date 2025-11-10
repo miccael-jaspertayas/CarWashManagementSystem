@@ -245,5 +245,17 @@ namespace CarWashManagement.UI
 
             LoadUserList(); // Refresh the list
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // UserManagementForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "UserManagementForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }
