@@ -20,5 +20,17 @@ namespace CarWashManagement.UI
             MaximizeBox = false;
             MinimizeBox = false;
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.ClientSize = new System.Drawing.Size(826, 499);
+            this.Name = "BaseForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }

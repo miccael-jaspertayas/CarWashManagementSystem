@@ -11,22 +11,15 @@ using CarWashManagement.Core.FileHandlers;
 
 namespace CarWashManagement.UI
 {
-    public class ChangePasswordForm : BaseForm
+    public partial class ChangePasswordForm : BaseForm
     {
-        private Label lblOldPassword;
-        private TextBox txtOldPassword;
-        private Label lblNewPassword;
-        private TextBox txtNewPassword;
-        private Label lblConfirmPassword;
-        private TextBox txtConfirmPassword;
-        private Button btnSubmit;
-        private Button btnCancel;
-
         private readonly AccountManager accountManager;
         private readonly User loggedInUser;
 
         public ChangePasswordForm(User user)
         {
+            InitializeComponent();
+
             loggedInUser = user;
 
             accountManager = new AccountManager(
@@ -34,92 +27,8 @@ namespace CarWashManagement.UI
                 new AuditFileHandler()
             );
 
-            SetUpControls();
-        }
-
-        // Method to setup UI.
-        public void SetUpControls()
-        {
-            Text = "Change Password";
-            Size = new Size(300, 280);
-
-            int currentY = 20;
-
-            // --- Old Password ---
-            lblOldPassword = new Label 
-            { 
-                Text = "Old Password:", 
-                Location = new Point(15, currentY), 
-                AutoSize = true 
-            };
-
-            txtOldPassword = new TextBox 
-            { 
-                Location = new Point(15, currentY + 20), 
-                Size = new Size(250, 23), 
-                PasswordChar = '*' 
-            };
-
-            currentY += 55;
-
-            // --- New Password ---
-            lblNewPassword = new Label 
-            { 
-                Text = "New Password:", 
-                Location = new Point(15, currentY), 
-                AutoSize = true 
-            };
-
-            txtNewPassword = new TextBox 
-            { 
-                Location = new Point(15, currentY + 20), 
-                Size = new Size(250, 23), 
-                PasswordChar = '*' 
-            };
-
-            currentY += 55;
-
-            // --- Confirm Password ---
-            lblConfirmPassword = new Label 
-            { 
-                Text = "Confirm New Password:", 
-                Location = new Point(15, currentY), 
-                AutoSize = true 
-            };
-            txtConfirmPassword = new TextBox 
-            { 
-                Location = new Point(15, currentY + 20), 
-                Size = new Size(250, 23), 
-                PasswordChar = '*' 
-            };
-            currentY += 55;
-
-            // --- Submit Button ---
-            btnSubmit = new Button 
-            { 
-                Text = "Submit", 
-                Location = new Point(110, currentY + 10), 
-                Size = new Size(75, 25) 
-            };
-            btnSubmit.Click += btnSubmit_Click;
-
-            // --- Cancel Button ---
-            btnCancel = new Button 
-            { 
-                Text = "Cancel", 
-                Location = new Point(190, currentY + 10), 
-                Size = new Size(75, 25) 
-            };
-            btnCancel.Click += (sender, e) => { this.Close(); }; // Close this dialog.
-
-            Controls.Add(lblOldPassword);
-            Controls.Add(txtOldPassword);
-            Controls.Add(lblNewPassword);
-            Controls.Add(txtNewPassword);
-            Controls.Add(lblConfirmPassword);
-            Controls.Add(txtConfirmPassword);
-            Controls.Add(btnSubmit);
-            Controls.Add(btnCancel);
+            this.btnSubmit.Click += btnSubmit_Click;
+            this.btnCancel.Click += (sender, e) => { this.Close(); };
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)

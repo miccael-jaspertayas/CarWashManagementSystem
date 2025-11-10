@@ -11,69 +11,20 @@ using CarWashManagement.Core;
 
 namespace CarWashManagement.UI
 {
-    public class LoginForm : BaseForm 
+    public partial class LoginForm : BaseForm 
     {
         private readonly AccountManager accountManager;
 
-        // Declaration of the UI control variables.
-        private Label usernameLabel;
-        private TextBox usernameTextBox;
-        private Label passwordLabel;
-        private TextBox passwordTextBox;
-        private Button loginButton;
-
         public LoginForm()
         {
+            InitializeComponent();
+
             UserFileHandler userFileHandler = new UserFileHandler();
             AuditFileHandler auditFileHandler = new AuditFileHandler();
 
             accountManager = new AccountManager(userFileHandler, auditFileHandler);
 
-            SetUpControls();
-        }
-
-        // Method to create and position all UI controls.
-        private void SetUpControls()
-        {
-            // - - - - - Form set up - - - - -
-            Text = "Car Wash Management - Login";
-            Size = new Size(300, 200);
-            Name = "LoginForm";
-
-            // - - - - - Username Label - - - - -
-            usernameLabel = new Label();
-            usernameLabel.Text = "Username: ";
-            usernameLabel.Location = new Point(30, 30);
-            usernameLabel.Size = new Size(70, 20);
-            Controls.Add(usernameLabel);
-
-            // - - - - - Username TextBox - - - - -
-            usernameTextBox = new TextBox();
-            usernameTextBox.Location = new Point(110, 30);
-            usernameTextBox.Size = new Size(140, 20);
-            Controls.Add(usernameTextBox);
-
-            // - - - - - Password Label - - - - -
-            passwordLabel = new Label();
-            passwordLabel.Text = "Password:";
-            passwordLabel.Location = new Point(30, 70);
-            passwordLabel.Size = new Size(70, 20);
-            Controls.Add(passwordLabel);
-
-            // - - - - - Password TextBox - - - - -
-            passwordTextBox = new TextBox();
-            passwordTextBox.Location = new Point(110, 70);
-            passwordTextBox.Size = new Size(140, 20);
-            passwordTextBox.PasswordChar = '*';
-            Controls.Add(passwordTextBox);
-
-            // - - - - - Login Button - - - - -
-            loginButton = new Button();
-            loginButton.Text = "Login";
-            loginButton.Location = new Point(110, 110);
-            loginButton.Size = new Size(75, 30);
-            loginButton.Click += LoginButton_Click;
-            Controls.Add(loginButton);
+            this.loginButton.Click += LoginButton_Click;
         }
 
         // Method that is executed when the login button is clicked.
