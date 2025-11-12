@@ -33,6 +33,7 @@ namespace CarWashManagement.UI
 
         // Declaration of panels for layout.
         private Panel washEntryPanel;
+        private Panel servicePanel;
         private Panel todaysEntriesPanel;
         private Panel dailySummaryPanel;
 
@@ -138,7 +139,7 @@ namespace CarWashManagement.UI
             adminMenuItem.DropDownItems.Add("Manage Vehicles", null, ManageVehicles_Click);
             adminMenuItem.DropDownItems.Add("Manage Services", null, ManageServices_Click);
             adminMenuItem.DropDownItems.Add("Manage Expenses", null, ManageExpenses_Click);
-            adminMenuItem.DropDownItems.Add("Monthly Report", null, ShowMonthlyReport_Click);
+            adminMenuItem.DropDownItems.Add("Monthly/Yearly Report", null, ShowMonthlyReport_Click);
 
             mainMenu.Items.Add(adminMenuItem);
             Controls.Add(mainMenu);
@@ -279,6 +280,16 @@ namespace CarWashManagement.UI
                 AutoSize = true
             };
             washEntryPanel.Controls.Add(lblAdditionalServices);
+
+            // --- Service Panel ---
+            servicePanel = new Panel
+            {
+                Location = new Point(10, currentY + 20),
+                Size = new Size(280, 150),
+                BorderStyle = BorderStyle.None,
+                AutoScroll = true,
+            };
+            washEntryPanel.Controls.Add(servicePanel);
 
             int serviceShareY = washEntryPanel.Height - 160;
             
@@ -562,11 +573,11 @@ namespace CarWashManagement.UI
         // Method to load the service controls.
         private void LoadServiceControls()
         {
-            int currentY = 180;
+            int currentY = 10;
 
             foreach(Control c in serviceControls)
             {
-                washEntryPanel.Controls.Remove(c);
+                servicePanel.Controls.Remove(c);
             }
             serviceControls.Clear();
 
@@ -579,16 +590,16 @@ namespace CarWashManagement.UI
                 chk.AutoSize = true;
                 chk.Tag = service; // Store the service object in the tag.
                 chk.CheckedChanged += ServiceCheckbox_CheckedChanged;
-                washEntryPanel.Controls.Add(chk);
+                servicePanel.Controls.Add(chk);
                 serviceControls.Add(chk);
 
                 // Create the Textbox
                 TextBox txt = new TextBox();
-                txt.Location = new Point(190, currentY - 3);
+                txt.Location = new Point(180, currentY - 3);
                 txt.Size = new Size(80, 23);
                 txt.Enabled = false;
                 txt.Tag = service; // Store the service object in the tag.
-                washEntryPanel.Controls.Add(txt);
+                servicePanel.Controls.Add(txt);
                 serviceControls.Add(txt);
 
                 if (service.PricingType == ServicePricingType.ManualInput)
@@ -828,7 +839,7 @@ namespace CarWashManagement.UI
         // Method that opens the Monthly Report dashboard form (Admin Only)
         private void ShowMonthlyReport_Click(object sender, EventArgs e)
         {
-            MonthlyReportForm reportForm = new MonthlyReportForm();
+            ReportForm reportForm = new ReportForm();
             reportForm.ShowDialog();
         }
 

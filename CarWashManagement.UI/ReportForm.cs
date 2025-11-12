@@ -15,7 +15,7 @@ namespace CarWashManagement.UI
     public enum ReportMode { Monthly, Yearly }
     
     // Form to generate report based on the inputted month-year.
-    public class MonthlyReportForm : BaseForm
+    public class ReportForm : BaseForm
     {
         private Label lblSelectMonth;
         private DateTimePicker dtpReportDate;
@@ -51,7 +51,7 @@ namespace CarWashManagement.UI
         private readonly TransactionManager transactionManager;
         private readonly ExpenseManager expenseManager;
 
-        public MonthlyReportForm()
+        public ReportForm()
         {
             transactionManager = new TransactionManager(new TransactionFileHandler(), new AuditFileHandler());
             expenseManager = new ExpenseManager(new ExpenseFileHandler(), new AuditFileHandler());

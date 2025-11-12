@@ -16,11 +16,14 @@ namespace CarWashManagement.UI
         private readonly AccountManager accountManager;
 
         // Declaration of the UI control variables.
-        private Label usernameLabel;
-        private TextBox usernameTextBox;
-        private Label passwordLabel;
-        private TextBox passwordTextBox;
-        private Button loginButton;
+        private PictureBox loginPicture;
+        private Label lblLogin;
+        private Label lblInfo;
+        private Label lblUsername;
+        private TextBox txtUsername;
+        private Label lblPassword;
+        private TextBox txtPassword;
+        private Button btnLogin;
 
         public LoginForm()
         {
@@ -37,51 +40,91 @@ namespace CarWashManagement.UI
         {
             // - - - - - Form set up - - - - -
             Text = "Car Wash Management - Login";
-            Size = new Size(300, 200);
+            Size = new Size(700, 560);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
 
-            // - - - - - Username Label - - - - -
-            usernameLabel = new Label();
-            usernameLabel.Text = "Username: ";
-            usernameLabel.Location = new Point(30, 30);
-            usernameLabel.Size = new Size(70, 20);
-            Controls.Add(usernameLabel);
+            loginPicture = new PictureBox
+            {
+                Image = Properties.Resources.CarWash_Login_Image,
+                Location = new Point(0, 0),
+                Size = new Size(300, 530),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            Controls.Add(loginPicture);
 
-            // - - - - - Username TextBox - - - - -
-            usernameTextBox = new TextBox();
-            usernameTextBox.Location = new Point(110, 30);
-            usernameTextBox.Size = new Size(140, 20);
-            Controls.Add(usernameTextBox);
+            lblLogin = new Label
+            {
+                Text = "Login to your account",
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
+                Location = new Point(340, 120),
+                AutoSize = true
+            };
+            Controls.Add(lblLogin);
 
-            // - - - - - Password Label - - - - -
-            passwordLabel = new Label();
-            passwordLabel.Text = "Password:";
-            passwordLabel.Location = new Point(30, 70);
-            passwordLabel.Size = new Size(70, 20);
-            Controls.Add(passwordLabel);
+            // --- Username ---
+            lblUsername = new Label();
+            lblUsername.Text = "Username: ";
+            lblUsername.Location = new Point(340, 180);
+            lblUsername.Font = new Font("Segoe UI", 12);
+            lblUsername.AutoSize = true;
+            Controls.Add(lblUsername);
 
-            // - - - - - Password TextBox - - - - -
-            passwordTextBox = new TextBox();
-            passwordTextBox.Location = new Point(110, 70);
-            passwordTextBox.Size = new Size(140, 20);
-            passwordTextBox.PasswordChar = '*';
-            Controls.Add(passwordTextBox);
+            txtUsername = new TextBox();
+            txtUsername.Location = new Point(440, 180);
+            txtUsername.Size = new Size(190, 60);
+            txtUsername.Font = new Font("Segoe UI", 14);
+            txtUsername.BorderStyle = BorderStyle.None;
+            Controls.Add(txtUsername);
 
-            // - - - - - Login Button - - - - -
-            loginButton = new Button();
-            loginButton.Text = "Login";
-            loginButton.Location = new Point(110, 110);
-            loginButton.Size = new Size(75, 30);
-            loginButton.Click += LoginButton_Click;
-            Controls.Add(loginButton);
+            // --- Password ---
+            lblPassword = new Label();
+            lblPassword.Text = "Password:";
+            lblPassword.Location = new Point(340, 220);
+            lblPassword.Font = new Font("Segoe UI", 12);
+            lblPassword.AutoSize = true;
+            Controls.Add(lblPassword);
+
+            txtPassword = new TextBox();
+            txtPassword.Location = new Point(440, 220);
+            txtPassword.Size = new Size(190, 60);
+            txtPassword.Font = new Font("Segoe UI", 14);
+            txtPassword.PasswordChar = '*';
+            txtPassword.BorderStyle = BorderStyle.None;
+            Controls.Add(txtPassword);
+
+            // --- Login Button ---
+            btnLogin = new Button();
+            btnLogin.Text = "LOGIN";
+            btnLogin.Font = new Font("Segoe UI", 12);
+            btnLogin.Location = new Point(530, 270);
+            btnLogin.Size = new Size(100, 40);
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.BackColor = Color.FromArgb(41, 128, 185);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Click += btnLogin_Click;
+            Controls.Add(btnLogin);
+
+            Label lblInfo = new Label();
+            lblInfo.Text = "No account yet? Ask an administrator to create an account for you.";
+            lblInfo.Font = new Font("Segoe UI", 10);
+            lblInfo.ForeColor = Color.Gray;
+            lblInfo.AutoSize = true;
+            lblInfo.TextAlign = ContentAlignment.MiddleCenter;
+            lblInfo.AutoSize = false;
+            lblInfo.Size = new Size(300, 100);
+            lblInfo.Location = new Point(340, 420);
+            Controls.Add(lblInfo);
         }
 
         // Method that is executed when the login button is clicked.
-        private void LoginButton_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             // Get the text from the text boxes.
-            string username = usernameTextBox.Text;
-            string password = passwordTextBox.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
             
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
@@ -120,9 +163,9 @@ namespace CarWashManagement.UI
 
         public void ClearFields()
         {
-            usernameTextBox.Clear();
-            passwordTextBox.Clear();
-            usernameTextBox.Focus();
+            txtUsername.Clear();
+            txtPassword.Clear();
+            txtUsername.Focus();
         }
 
         // Override method to manage the behaviour when closing the Login form.
