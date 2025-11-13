@@ -78,7 +78,7 @@ The system uses flat text files stored in a dedicated directory (relative to the
 | Role | Dashboard Access | Admin Menu Access | Key Capabilities |
 | :---: | :--- | :--- | :--- |
 | **ADMIN** | Full | All management forms (Users, Vehicles, Services, Expenses) and Reporting. | Can activate/deactivate users, set prices, and access all financial reports. |
-| **EMPLOYEE** | Full | None (Restricted to daily operations). | Create new transactions, update transaction status, and update own password. |
+| **RECORDER** | Full | None (Restricted to daily operations). | Create new transactions, update transaction status, and update own password. |
 
 -----
 
