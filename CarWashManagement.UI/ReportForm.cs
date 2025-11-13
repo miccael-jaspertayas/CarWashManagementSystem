@@ -88,7 +88,10 @@ namespace CarWashManagement.UI
             { 
                 Text = "Generate", 
                 Location = new Point(270, 10), 
-                Size = new Size(80, 30) 
+                Size = new Size(80, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnGenerateReport.Click += btnGenerateReport_Click;
             Controls.Add(btnGenerateReport);
@@ -100,7 +103,9 @@ namespace CarWashManagement.UI
                 Text = "Monthly",
                 Location = new Point(450, 10),
                 Size = new Size(75, 30),
-                BackColor = Color.LightGray
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnMonthlyToggle.Click += btnMonthlyToggle_Click;
             Controls.Add(btnMonthlyToggle);
@@ -112,6 +117,9 @@ namespace CarWashManagement.UI
                 Text = "Yearly",
                 Location = new Point(530, 10),
                 Size = new Size(75, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                ForeColor = Color.FromArgb(41, 128, 185)
             };
             btnYearlyToggle.Click += btnYearlyToggle_Click;
             Controls.Add(btnYearlyToggle);
@@ -121,7 +129,8 @@ namespace CarWashManagement.UI
             {
                 Location = new Point(15, 50),
                 Size = new Size(590, 320),
-                BorderStyle = BorderStyle.Fixed3D
+                BorderStyle = BorderStyle.Fixed3D,
+                BackColor = Color.White
             };
             this.Controls.Add(pnlReport);
 
@@ -134,7 +143,7 @@ namespace CarWashManagement.UI
             { 
                 Text = "Total Revenue:", 
                 Location = new Point(col1X, currentY), 
-                Font = new Font(Font, FontStyle.Bold), 
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
             
@@ -142,8 +151,10 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col1X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
-                Font = new Font(Font, FontStyle.Bold), 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                Font = new Font(Font, FontStyle.Bold),
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
 
@@ -151,7 +162,8 @@ namespace CarWashManagement.UI
             lblReportTotalWashes = new Label 
             { 
                 Text = "Total Washes:", 
-                Location = new Point(col2X, currentY), 
+                Location = new Point(col2X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -159,7 +171,9 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col2X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
             
@@ -169,14 +183,17 @@ namespace CarWashManagement.UI
             lblReportOwnerShare = new Label 
             { 
                 Text = "Total Owner Share:", 
-                Location = new Point(col1X, currentY), 
+                Location = new Point(col1X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
             txtReportOwnerShare = new TextBox 
             { 
                 Location = new Point(col1X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
 
@@ -184,7 +201,8 @@ namespace CarWashManagement.UI
             lblReportEmpShare = new Label 
             { 
                 Text = "Total Employee Share:", 
-                Location = new Point(col2X, currentY), 
+                Location = new Point(col2X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -192,7 +210,9 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col2X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
 
@@ -202,7 +222,8 @@ namespace CarWashManagement.UI
             lblReportMostWashed = new Label 
             { 
                 Text = "Most Washed Vehicle:", 
-                Location = new Point(col1X, currentY), 
+                Location = new Point(col1X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -210,7 +231,9 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col1X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
 
@@ -218,7 +241,8 @@ namespace CarWashManagement.UI
             lblReportMostService = new Label 
             { 
                 Text = "Most Availed Service:", 
-                Location = new Point(col2X, currentY), 
+                Location = new Point(col2X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -226,7 +250,9 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col2X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
             
@@ -236,7 +262,8 @@ namespace CarWashManagement.UI
             lblReportHighestDay = new Label 
             { 
                 Text = "Highest Revenue Day:", 
-                Location = new Point(col1X, currentY), 
+                Location = new Point(col1X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -244,7 +271,9 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col1X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
             
@@ -254,7 +283,8 @@ namespace CarWashManagement.UI
             lblReportTotalExpenses = new Label 
             { 
                 Text = "Total Expenses:", 
-                Location = new Point(col1X, currentY), 
+                Location = new Point(col1X, currentY),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -262,7 +292,9 @@ namespace CarWashManagement.UI
             { 
                 Location = new Point(col1X, currentY + 20), 
                 Size = new Size(180, 23), 
-                ReadOnly = true, 
+                ReadOnly = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 TextAlign = HorizontalAlignment.Right 
             };
 
@@ -271,7 +303,8 @@ namespace CarWashManagement.UI
             { 
                 Text = "Net Profit (Owner):", 
                 Location = new Point(col2X, currentY), 
-                Font = new Font(this.Font, FontStyle.Bold), 
+                Font = new Font(this.Font, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true 
             };
 
@@ -280,8 +313,10 @@ namespace CarWashManagement.UI
                 Location = new Point(col2X, currentY + 20), 
                 Size = new Size(180, 23), 
                 ReadOnly = true, 
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 Font = new Font(this.Font, FontStyle.Bold), 
-                TextAlign = HorizontalAlignment.Right 
+                TextAlign = HorizontalAlignment.Right,
             };
 
             // Add all controls to the report panel.
@@ -297,7 +332,8 @@ namespace CarWashManagement.UI
             {
                 Text = "Entries",
                 Location = new Point(15, 385),
-                Font = new Font(Font, FontStyle.Bold),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             Controls.Add(lblEntries);
@@ -327,8 +363,10 @@ namespace CarWashManagement.UI
             lblSelectMonth.Text = "Select Month:";
             dtpReportDate.CustomFormat = "MMMM yyyy";
 
-            btnMonthlyToggle.BackColor = Color.LightGray;
-            btnYearlyToggle.BackColor = SystemColors.Control;
+            btnMonthlyToggle.BackColor = Color.FromArgb(41, 128, 185);
+            btnMonthlyToggle.ForeColor = Color.White;
+            btnYearlyToggle.BackColor = Color.White;
+            btnYearlyToggle.ForeColor = Color.FromArgb(41, 128, 185);
 
             // Clear all textboxes in the report panel.
             foreach (Control ctrl in pnlReport.Controls)
@@ -347,8 +385,10 @@ namespace CarWashManagement.UI
             lblSelectMonth.Text = "Select Year:";
             dtpReportDate.CustomFormat = "yyyy";
 
-            btnYearlyToggle.BackColor = Color.LightGray;
-            btnMonthlyToggle.BackColor = SystemColors.Control;
+            btnYearlyToggle.BackColor = Color.FromArgb(41, 128, 185);
+            btnYearlyToggle.ForeColor= Color.White;
+            btnMonthlyToggle.BackColor = Color.White;
+            btnMonthlyToggle.ForeColor = Color.FromArgb(41, 128, 185);
 
             // Clear all textboxes in the report panel.
             foreach (Control ctrl in pnlReport.Controls)

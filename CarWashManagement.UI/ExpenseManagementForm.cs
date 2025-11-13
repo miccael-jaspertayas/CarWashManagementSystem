@@ -45,7 +45,7 @@ namespace CarWashManagement.UI
         public void SetUpControls()
         {
             Text = "Expense Management";
-            Size = new Size(500, 420);
+            Size = new Size(500, 390);
 
             // --- Expense List View ---
             lsvExpenses = new ListView
@@ -100,14 +100,14 @@ namespace CarWashManagement.UI
             lblAmount = new Label
             {
                 Text = "Amount:",
-                Location = new Point(330, formY + 50),
+                Location = new Point(330, formY),
                 AutoSize = true
             };
             Controls.Add(lblAmount);
 
             txtAmount = new TextBox
             {
-                Location = new Point(330, formY + 70),
+                Location = new Point(330, formY + 20),
                 Size = new Size(135, 23),
                 TextAlign = HorizontalAlignment.Right
             };
@@ -117,8 +117,11 @@ namespace CarWashManagement.UI
             btnAddExpense = new Button
             {
                 Text = "Add Expense",
-                Location = new Point(330, formY + 110),
-                Size = new Size(135, 30)
+                Location = new Point(330, formY + 70),
+                Size = new Size(135, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnAddExpense.Click += btnAddExpense_Click;
             Controls.Add(btnAddExpense);

@@ -97,7 +97,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\CarWash_Login_Image.jpg" />
+    <Content Include="Assets\eye-hide.png" />
+    <Content Include="Assets\eye-show.png" />
+    <Content Include="Assets\login-image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

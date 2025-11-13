@@ -43,7 +43,7 @@ namespace CarWashManagement.UI
         public void SetUpControls()
         {
             Text = "User Management";
-            Size = new Size(600, 400);
+            Size = new Size(600, 350);
 
             // --- User List View ---
             lsvUsers = new ListView
@@ -138,16 +138,22 @@ namespace CarWashManagement.UI
             {
                 Text = "Create User",
                 Location = new Point(420, formY),
-                Size = new Size(140, 25)
+                Size = new Size(140, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnCreateUser.Click += btnCreateUser_Click;
             Controls.Add(btnCreateUser);
 
             btnToggleStatus = new Button
             {
-                Text = "Activate/Deactivate Selected",
+                Text = "Activate / Deactivate Selected",
                 Location = new Point(420, formY + 30),
-                Size = new Size(140, 25)
+                Size = new Size(140, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnToggleStatus.Click += btnToggleStatus_Click;
             Controls.Add(btnToggleStatus);

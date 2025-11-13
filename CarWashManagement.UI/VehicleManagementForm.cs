@@ -131,7 +131,10 @@ namespace CarWashManagement.UI
             {
                 Text = "Add New",
                 Location = new Point(300, btnY),
-                Size = new Size(120, 30)
+                Size = new Size(120, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnAdd.Click += btnAdd_Click;
             Controls.Add(btnAdd);
@@ -141,7 +144,10 @@ namespace CarWashManagement.UI
             {
                 Text = "Update Selected",
                 Location = new Point(435, btnY),
-                Size = new Size(120, 30)
+                Size = new Size(120, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnUpdate.Click += btnUpdate_Click;
             btnUpdate.Enabled = false;
@@ -152,7 +158,10 @@ namespace CarWashManagement.UI
             {
                 Text = "Delete Selected",
                 Location = new Point(435, btnY + 80),
-                Size = new Size(120, 30)
+                Size = new Size(120, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(240, 128, 128),
+                ForeColor = Color.White
             };
             btnDelete.Click += btnDelete_Click;
             btnDelete.Enabled = false;
@@ -163,7 +172,10 @@ namespace CarWashManagement.UI
             {
                 Text = "Clear Form",
                 Location = new Point(300, btnY + 40),
-                Size = new Size(120, 30)
+                Size = new Size(120, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
             btnClear.Click += btnClear_Click;
             Controls.Add(btnClear);

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using CarWashManagement.Core.FileHandlers;
 using CarWashManagement.Core.Managers;
 using CarWashManagement.Core;
+using CarWashManagement.UI.Properties;
 
 namespace CarWashManagement.UI
 {
@@ -23,6 +24,7 @@ namespace CarWashManagement.UI
         private TextBox txtUsername;
         private Label lblPassword;
         private TextBox txtPassword;
+        private PictureBox eyeIcon;
         private Button btnLogin;
 
         public LoginForm()
@@ -44,78 +46,110 @@ namespace CarWashManagement.UI
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
 
+            // --- Login Picture ---
             loginPicture = new PictureBox
             {
-                Image = Properties.Resources.CarWash_Login_Image,
+                Image = Resources.login_image,
                 Location = new Point(0, 0),
                 Size = new Size(300, 530),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
             Controls.Add(loginPicture);
 
+            // --- Login Label ---
             lblLogin = new Label
             {
                 Text = "Login to your account",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 ForeColor = Color.FromArgb(41, 128, 185),
-                Location = new Point(340, 120),
+                Location = new Point(340, 100),
                 AutoSize = true
             };
             Controls.Add(lblLogin);
 
             // --- Username ---
-            lblUsername = new Label();
-            lblUsername.Text = "Username: ";
-            lblUsername.Location = new Point(340, 180);
-            lblUsername.Font = new Font("Segoe UI", 12);
-            lblUsername.AutoSize = true;
+            lblUsername = new Label
+            {
+                Text = "Username: ",
+                Location = new Point(340, 160),
+                Font = new Font("Segoe UI", 12),
+                AutoSize = true
+            };
             Controls.Add(lblUsername);
 
-            txtUsername = new TextBox();
-            txtUsername.Location = new Point(440, 180);
-            txtUsername.Size = new Size(190, 60);
-            txtUsername.Font = new Font("Segoe UI", 14);
-            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername = new TextBox
+            {
+                Location = new Point(340, 190),
+                Multiline = true,
+                Height = 30,
+                Width = 270,
+                WordWrap = false,
+                ScrollBars = ScrollBars.None,
+                Font = new Font("Segoe UI", 12),
+                BorderStyle = BorderStyle.None,
+            };
             Controls.Add(txtUsername);
 
             // --- Password ---
-            lblPassword = new Label();
-            lblPassword.Text = "Password:";
-            lblPassword.Location = new Point(340, 220);
-            lblPassword.Font = new Font("Segoe UI", 12);
-            lblPassword.AutoSize = true;
+            lblPassword = new Label
+            {
+                Text = "Password:",
+                Location = new Point(340, 230),
+                Font = new Font("Segoe UI", 12),
+                AutoSize = true,
+            };
             Controls.Add(lblPassword);
 
-            txtPassword = new TextBox();
-            txtPassword.Location = new Point(440, 220);
-            txtPassword.Size = new Size(190, 60);
-            txtPassword.Font = new Font("Segoe UI", 14);
-            txtPassword.PasswordChar = '*';
-            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword = new TextBox
+            {
+                Location = new Point(340, 260),
+                Multiline = true,
+                Height = 30,
+                Width = 270,
+                WordWrap = false,
+                ScrollBars = ScrollBars.None,
+                Font = new Font("Segoe UI", 12),
+                PasswordChar = '•',
+                BorderStyle = BorderStyle.None,
+            };
             Controls.Add(txtPassword);
 
+            // --- Eye Icon ---
+            eyeIcon = new PictureBox
+            {
+                Image = Resources.eye_hide,
+                Location = new Point(620, 260),
+                Size = new Size(30, 30),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            eyeIcon.Click += eyeIcon_Click;
+            Controls.Add(eyeIcon);
+
             // --- Login Button ---
-            btnLogin = new Button();
-            btnLogin.Text = "LOGIN";
-            btnLogin.Font = new Font("Segoe UI", 12);
-            btnLogin.Location = new Point(530, 270);
-            btnLogin.Size = new Size(100, 40);
-            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin = new Button
+            {
+                Text = "LOGIN",
+                Font = new Font("Segoe UI", 12),
+                Location = new Point(340, 320),
+                Size = new Size(100, 40),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
+            };
             btnLogin.FlatAppearance.BorderSize = 0;
-            btnLogin.BackColor = Color.FromArgb(41, 128, 185);
-            btnLogin.ForeColor = Color.White;
             btnLogin.Click += btnLogin_Click;
             Controls.Add(btnLogin);
 
-            Label lblInfo = new Label();
-            lblInfo.Text = "No account yet? Ask an administrator to create an account for you.";
-            lblInfo.Font = new Font("Segoe UI", 10);
-            lblInfo.ForeColor = Color.Gray;
-            lblInfo.AutoSize = true;
-            lblInfo.TextAlign = ContentAlignment.MiddleCenter;
-            lblInfo.AutoSize = false;
-            lblInfo.Size = new Size(300, 100);
-            lblInfo.Location = new Point(340, 420);
+            Label lblInfo = new Label
+            {
+                Text = "No account yet? Ask an administrator to create an account for you.",
+                Font = new Font("Segoe UI", 10),
+                ForeColor = Color.Gray,
+                TextAlign = ContentAlignment.MiddleCenter,
+                AutoSize = false,
+                Size = new Size(300, 100),
+                Location = new Point(340, 420),
+            }; 
             Controls.Add(lblInfo);
         }
 
@@ -141,8 +175,6 @@ namespace CarWashManagement.UI
 
                 if (loginResult == "SUCCESS")
                 {
-                    MessageBox.Show($"Welcome, {loggedInUser.FullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     // Create the new dashboard and pass in the logged-in user.
                     DashboardForm dashboard = new DashboardForm(loggedInUser);
                     dashboard.Show();
@@ -165,7 +197,15 @@ namespace CarWashManagement.UI
         {
             txtUsername.Clear();
             txtPassword.Clear();
+            txtPassword.UseSystemPasswordChar = false;
+            eyeIcon.Image = Resources.eye_hide;
             txtUsername.Focus();
+        }
+
+        private void eyeIcon_Click(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+            eyeIcon.Image = txtPassword.UseSystemPasswordChar ? Resources.eye_show : Resources.eye_hide;
         }
 
         // Override method to manage the behaviour when closing the Login form.

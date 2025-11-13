@@ -26,12 +26,13 @@ namespace CarWashManagement.UI
 
         // Declaration of header controls.
         private Label welcomeLabel;
-        private LinkLabel lnkChangePassword;
+        private Button btnChangePassword;
         private Button logoutButton;
         private MenuStrip mainMenu;
         private ToolStripMenuItem adminMenuItem;
 
         // Declaration of panels for layout.
+        private Panel headerPanel;
         private Panel washEntryPanel;
         private Panel servicePanel;
         private Panel todaysEntriesPanel;
@@ -69,6 +70,7 @@ namespace CarWashManagement.UI
         private ContextMenuStrip lsvContextMenu;
 
         // Declaration of Daily Summary Controls.
+        private Label lblDailySummary;
         private Label lblSummaryTotalRevenue;
         private TextBox txtSummaryTotalRevenue;
         private Label lblSummaryTotalOwnerShare;
@@ -114,25 +116,69 @@ namespace CarWashManagement.UI
         {
             // - - - - - Form set up - - - - -
             Text = "Car Wash Management - Daily Dashboard";
-            Size = new Size(800, 600);
+            Size = new Size(800, 700);
+
+            // - - - - - Header Panel - - - - -
+            headerPanel = new Panel
+            {
+                Size = new Size(785, 40),
+                Location = new Point(0,0),
+                BackColor = Color.FromArgb(41, 128, 185)
+            };
+            Controls.Add(headerPanel);
+
+            // --- Welcome Label ---
+            welcomeLabel = new Label
+            {
+                Text = $"Welcome, {loggedInUser.FullName} ({loggedInUser.Role})",
+                Location = new Point(10, 10),
+                AutoSize = true,
+                Height = 30,
+                BackColor = Color.White,
+                ForeColor = Color.FromArgb(41, 128, 185),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold)
+            };
+            headerPanel.Controls.Add(welcomeLabel);
 
             // --- Logout Button ---
             logoutButton = new Button
             {
                 Text = "Logout",
-                Location = new Point(ClientSize.Width - 85, 15),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Location = loggedInUser.Role == "ADMIN" ? new Point(665, 5) : new Point(700, 5),
                 Size = new Size(75, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                ForeColor = Color.FromArgb(41, 128, 185)
             };
             logoutButton.Click += LogoutButton_Click;
             logoutButton.BringToFront();
-            Controls.Add(logoutButton);
+            headerPanel.Controls.Add(logoutButton);
+
+            // --- Change Password Button ---
+            btnChangePassword = new Button
+            {
+                Text = "Change Password",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Location = loggedInUser.Role == "ADMIN" ? new Point(535, 5) : new Point(570, 5),
+                Size = new Size(125, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                ForeColor = Color.FromArgb(41, 128, 185)
+            };
+            btnChangePassword.Click += btnChangePassword_Click;
+            headerPanel.Controls.Add(btnChangePassword);
 
             // --- Main Menu ---
             mainMenu = new MenuStrip();
-            mainMenu.Dock = DockStyle.Top; // Dock to the top of the form
+            mainMenu.Location = new Point(0, 15);
+            mainMenu.Font = new Font("Segoe UI", 11, FontStyle.Regular);
+            mainMenu.BackColor = Color.FromArgb(41, 128, 185);
+            mainMenu.ForeColor = Color.White;
 
             // - Admin Menu Item -
-            adminMenuItem = new ToolStripMenuItem("Admin");
+            adminMenuItem = new ToolStripMenuItem("•••");
+            adminMenuItem.Alignment = ToolStripItemAlignment.Right;
             adminMenuItem.Visible = false; // Hidden by default
 
             adminMenuItem.DropDownItems.Add("Manage Users", null, ManageUsers_Click);
@@ -142,37 +188,18 @@ namespace CarWashManagement.UI
             adminMenuItem.DropDownItems.Add("Monthly/Yearly Report", null, ShowMonthlyReport_Click);
 
             mainMenu.Items.Add(adminMenuItem);
-            Controls.Add(mainMenu);
-            this.MainMenuStrip = mainMenu;
+            headerPanel.Controls.Add(mainMenu);
+            MainMenuStrip = mainMenu;
 
             int labelY = mainMenu.Height + 5;
-
-            // --- Welcome Label ---
-            welcomeLabel = new Label
-            {
-                Text = $"Welcome, {loggedInUser.FullName} ({loggedInUser.Role})",
-                Location = new Point(10, labelY),
-                AutoSize = true // Makes label resize to fit text
-            };
-            Controls.Add(welcomeLabel);
-
-            // --- Change Password Link ---
-            lnkChangePassword = new LinkLabel
-            {
-                Text = "Change Password",
-                Location = new Point(580, labelY),
-                AutoSize = true
-            };
-            lnkChangePassword.Click += lnkChangePassword_Click;
-            Controls.Add(lnkChangePassword);
-
 
             // - - - - - Wash Entry Panel - - - - -
             washEntryPanel = new Panel
             {
-                Location = new Point(10, 50),
-                Size = new Size(300, 500),
-                BorderStyle = BorderStyle.FixedSingle
+                Location = new Point(10, 60),
+                Size = new Size(300, 590),
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             Controls.Add(washEntryPanel);
 
@@ -208,7 +235,8 @@ namespace CarWashManagement.UI
             {
                 Location = new Point(110, currentY - 3),
                 Size = new Size(170, 23),
-                DropDownStyle = ComboBoxStyle.DropDownList // Prevents user from typing
+                DropDownStyle = ComboBoxStyle.DropDownList, // Prevents user from typing
+                FlatStyle = FlatStyle.Standard
             };
             cmbVehicleType.SelectedIndexChanged += cmbVehicleType_SelectedIndexChanged;
             washEntryPanel.Controls.Add(cmbVehicleType);
@@ -229,7 +257,9 @@ namespace CarWashManagement.UI
                 Location = new Point(10, currentY + 20),
                 Size = new Size(80, 23),
                 ReadOnly = true, // Base fee is auto-filled based on vehicle type
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtBaseFee);
 
@@ -247,7 +277,9 @@ namespace CarWashManagement.UI
                 Location = new Point(100, currentY + 20),
                 Size = new Size(80, 23),
                 ReadOnly = true, // Owner share is auto-filled based on vehicle type
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtOwnerShare);
 
@@ -265,7 +297,9 @@ namespace CarWashManagement.UI
                 Location = new Point(190, currentY + 20),
                 Size = new Size(80, 23),
                 ReadOnly = true, // Employee share is auto-filled based on vehicle type.
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtEmployeeShare);
 
@@ -276,7 +310,8 @@ namespace CarWashManagement.UI
             {
                 Text = "Additional Services:",
                 Location = new Point(10, currentY),
-                Font = new Font(Font, FontStyle.Bold),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             washEntryPanel.Controls.Add(lblAdditionalServices);
@@ -285,13 +320,13 @@ namespace CarWashManagement.UI
             servicePanel = new Panel
             {
                 Location = new Point(10, currentY + 20),
-                Size = new Size(280, 150),
+                Size = new Size(280, 200),
                 BorderStyle = BorderStyle.None,
-                AutoScroll = true,
+                AutoScroll = true
             };
             washEntryPanel.Controls.Add(servicePanel);
 
-            int serviceShareY = washEntryPanel.Height - 160;
+            int serviceShareY = washEntryPanel.Height - 190;
             
             // --- Total Service Fee ---
             lblTotalServiceFee = new Label
@@ -307,7 +342,9 @@ namespace CarWashManagement.UI
                 Location = new Point(10, serviceShareY),
                 Size = new Size(80, 23),
                 ReadOnly = true, // Total service fee is auto-calculated
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtTotalServiceFee);
 
@@ -325,7 +362,9 @@ namespace CarWashManagement.UI
                 Location = new Point(100, serviceShareY),
                 Size = new Size(80, 23),
                 ReadOnly = true, // Service owner share is auto-calculated
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtServiceOwnerShare);
 
@@ -343,7 +382,9 @@ namespace CarWashManagement.UI
                 Location = new Point(190, serviceShareY),
                 Size = new Size(80, 23),
                 ReadOnly = true, // Service employee share is auto-calculated
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtServiceEmpShare);
 
@@ -351,7 +392,7 @@ namespace CarWashManagement.UI
             chkIsPaid = new CheckBox
             {
                 Text = "Paid by Employee",
-                Location = new Point(10, washEntryPanel.Height - 120),
+                Location = new Point(10, washEntryPanel.Height - 140),
                 AutoSize = true
             };
             washEntryPanel.Controls.Add(chkIsPaid);
@@ -360,7 +401,7 @@ namespace CarWashManagement.UI
             chkWashStatus = new CheckBox
             {
                 Text = "Mark as Completed", // Unchecked = Ongoing, Checked = Completed
-                Location = new Point(10, washEntryPanel.Height - 98),
+                Location = new Point(10, washEntryPanel.Height - 113),
                 AutoSize = true
             };
             washEntryPanel.Controls.Add(chkWashStatus);
@@ -369,16 +410,17 @@ namespace CarWashManagement.UI
             lblDiscount = new Label
             {
                 Text = "Discount:",
-                Location = new Point(160, washEntryPanel.Height - 120),
+                Location = new Point(160, washEntryPanel.Height - 140),
                 AutoSize = true
             };
             washEntryPanel.Controls.Add(lblDiscount);
 
             cmbDiscount = new ComboBox
             {
-                Location = new Point(220, washEntryPanel.Height - 123),
+                Location = new Point(220, washEntryPanel.Height - 140),
                 Size = new Size(60, 23),
                 DropDownStyle = ComboBoxStyle.DropDownList,
+                FlatStyle = FlatStyle.Popup
             };
             cmbDiscount.Items.Add("N/A");
             cmbDiscount.Items.Add("PWD");
@@ -392,19 +434,22 @@ namespace CarWashManagement.UI
             lblTotalAmount = new Label
             {
                 Text = "Total Amount:",
-                Location = new Point(10, washEntryPanel.Height - 60),
-                Font = new Font(Font, FontStyle.Bold),
+                Location = new Point(10, washEntryPanel.Height - 75),
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             washEntryPanel.Controls.Add(lblTotalAmount);
 
             txtTotalAmount = new TextBox
             {
-                Location = new Point(110, washEntryPanel.Height - 63),
-                Size = new Size(170, 23),
+                Location = new Point(120, washEntryPanel.Height - 78),
+                Size = new Size(160, 23),
                 ReadOnly = true, // Total amount is auto-calculated
                 Font = new Font(Font, FontStyle.Bold),
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White
             };
             washEntryPanel.Controls.Add(txtTotalAmount);
 
@@ -412,16 +457,20 @@ namespace CarWashManagement.UI
             btnAddTransaction = new Button
             {
                 Text = "Add Entry",
-                Location = new Point(10, washEntryPanel.Height - 35),
-                Size = new Size(270, 25),
+                Location = new Point(10, washEntryPanel.Height - 40),
+                Size = new Size(270, 30),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(41, 128, 185),
+                ForeColor = Color.White
             };
+            btnAddTransaction.FlatAppearance.BorderSize = 0;
             btnAddTransaction.Click += btnAddTransaction_Click;
             washEntryPanel.Controls.Add(btnAddTransaction);
 
             // - - - - - Today's Entry Panel - - - - -
             todaysEntriesPanel = new Panel();
-            todaysEntriesPanel.Location = new Point(320, 50);
-            todaysEntriesPanel.Size = new Size(450, 290);
+            todaysEntriesPanel.Location = new Point(320, 60);
+            todaysEntriesPanel.Size = new Size(455, 380);
             todaysEntriesPanel.BorderStyle = BorderStyle.FixedSingle;
             this.Controls.Add(todaysEntriesPanel);
 
@@ -431,7 +480,7 @@ namespace CarWashManagement.UI
                 Dock = DockStyle.Fill, // Fill the entire panel
                 View = View.Details, // Set view to show columns
                 FullRowSelect = true, // Select the entire row
-                GridLines = true
+                GridLines = true,
             };
             lsvTodayEntries.Columns.Add("Time", 50, HorizontalAlignment.Left);
             lsvTodayEntries.Columns.Add("Vehicle", 80, HorizontalAlignment.Left);
@@ -449,21 +498,34 @@ namespace CarWashManagement.UI
 
             // - - - - - Daily Summary Panel - - - - -
             dailySummaryPanel = new Panel();
-            dailySummaryPanel.Location = new Point(320, 350);
-            dailySummaryPanel.Size = new Size(450, 200);
+            dailySummaryPanel.Location = new Point(320, 450);
+            dailySummaryPanel.Size = new Size(455, 200);
             dailySummaryPanel.BorderStyle = BorderStyle.FixedSingle;
+            dailySummaryPanel.BackColor = Color.White;
             this.Controls.Add(dailySummaryPanel);
+
+            // --- Daily Summary Label ---
+            lblDailySummary = new Label
+            {
+                Text = "Daily Summary",
+                Location = new Point(15, 10),
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
+                AutoSize = true
+            };
+            dailySummaryPanel.Controls.Add(lblDailySummary);
 
             int col1X = 15;
             int col2X = 240;
-            int currentSummaryY = 20;
+            int currentSummaryY = 40;
 
             // --- Total Revenue ---
             lblSummaryTotalRevenue = new Label
             {
                 Text = "Total Revenue:",
                 Location = new Point(col1X, currentSummaryY),
-                Font = new Font(Font, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             dailySummaryPanel.Controls.Add(lblSummaryTotalRevenue);
@@ -474,17 +536,21 @@ namespace CarWashManagement.UI
                 Size = new Size(180, 23),
                 ReadOnly = true,
                 Font = new Font(Font, FontStyle.Bold),
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle
             };
             dailySummaryPanel.Controls.Add(txtSummaryTotalRevenue);
 
-            currentSummaryY += 60;
+            currentSummaryY += 50;
 
             // --- Total Owner Share ---
             lblSummaryTotalOwnerShare = new Label
             {
                 Text = "Total Owner Share:",
                 Location = new Point(col1X, currentSummaryY),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             dailySummaryPanel.Controls.Add(lblSummaryTotalOwnerShare);
@@ -494,7 +560,9 @@ namespace CarWashManagement.UI
                 Location = new Point(col1X, currentSummaryY + 20),
                 Size = new Size(180, 23),
                 ReadOnly = true,
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle
             };
             dailySummaryPanel.Controls.Add(txtSummaryTotalOwnerShare);
 
@@ -503,6 +571,8 @@ namespace CarWashManagement.UI
             {
                 Text = "Total Employee Share:",
                 Location = new Point(col2X, currentSummaryY),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             dailySummaryPanel.Controls.Add(lblSummaryTotalEmpShare);
@@ -512,18 +582,21 @@ namespace CarWashManagement.UI
                 Location = new Point(col2X, currentSummaryY + 20),
                 Size = new Size(180, 23),
                 ReadOnly = true,
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle
             };
             dailySummaryPanel.Controls.Add(txtSummaryTotalEmpShare);
 
-            currentSummaryY += 60;
+            currentSummaryY += 50;
 
             // --- Total Washes ---
             lblSummaryTotalWashes = new Label
             {
-                Text = "Total Washes (Today):",
+                Text = "Total Washes:",
                 Location = new Point(col1X, currentSummaryY),
-                Font = new Font(Font, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             dailySummaryPanel.Controls.Add(lblSummaryTotalWashes);
@@ -533,7 +606,9 @@ namespace CarWashManagement.UI
                 Location = new Point(col1X, currentSummaryY + 20),
                 Size = new Size(180, 23),
                 ReadOnly = true,
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle
             };
             dailySummaryPanel.Controls.Add(txtSummaryTotalWashes);
 
@@ -542,7 +617,8 @@ namespace CarWashManagement.UI
             {
                 Text = "Most Washed Vehicle:",
                 Location = new Point(col2X, currentSummaryY),
-                Font = new Font(Font, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = Color.FromArgb(41, 128, 185),
                 AutoSize = true
             };
             dailySummaryPanel.Controls.Add(lblSummaryMostWashedVehicle);
@@ -552,7 +628,9 @@ namespace CarWashManagement.UI
                 Location = new Point(col2X, currentSummaryY + 20),
                 Size = new Size(180, 23),
                 ReadOnly = true,
-                TextAlign = HorizontalAlignment.Right
+                TextAlign = HorizontalAlignment.Right,
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle
             };
             dailySummaryPanel.Controls.Add(txtSummaryMostWashedVehicle);
 
@@ -598,6 +676,8 @@ namespace CarWashManagement.UI
                 txt.Location = new Point(180, currentY - 3);
                 txt.Size = new Size(80, 23);
                 txt.Enabled = false;
+                txt.BorderStyle = BorderStyle.FixedSingle;
+                txt.BackColor = Color.White;
                 txt.Tag = service; // Store the service object in the tag.
                 servicePanel.Controls.Add(txt);
                 serviceControls.Add(txt);
@@ -793,7 +873,7 @@ namespace CarWashManagement.UI
         }
 
         // Method that opens the change password form.
-        private void lnkChangePassword_Click(object sender, EventArgs e)
+        private void btnChangePassword_Click(object sender, EventArgs e)
         {
             ChangePasswordForm changePasswordForm = new ChangePasswordForm(loggedInUser);
             changePasswordForm.ShowDialog();
