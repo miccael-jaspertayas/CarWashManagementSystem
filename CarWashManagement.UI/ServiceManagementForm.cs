@@ -11,22 +11,8 @@ using CarWashManagement.Core.Enums; // For ServicePricingType.
 
 namespace CarWashManagement.UI
 {
-    public class ServiceManagementForm : BaseForm
+    public partial class ServiceManagementForm : BaseForm
     {
-        private ListView lsvServices;
-        private Label lblName;
-        private TextBox txtName;
-        private Label lblPricingType;
-        private ComboBox cmbPricingType;
-        private Label lblFee;
-        private TextBox txtFee;
-        private Label lblMultiplier;
-        private TextBox txtMultiplier;
-        private Button btnAdd;
-        private Button btnUpdate;
-        private Button btnDelete;
-        private Button btnClear;
-
         private readonly CarManager carManager;
         private readonly User loggedInUser;
 
@@ -35,161 +21,12 @@ namespace CarWashManagement.UI
             this.loggedInUser = loggedInUser;
             this.carManager = carManager;
 
-            SetUpControls();
-            LoadServiceList();
-        }
-
-        // Method to setup the Service Management UI controls.
-        private void SetUpControls()
-        {
-            Text = "Service Management";
-            Size = new Size(600, 420);
-
-            // --- Service List View ---
-            lsvServices = new ListView
-            {
-                Location = new Point(15, 15),
-                Size = new Size(550, 200),
-                View = View.Details,
-                FullRowSelect = true,
-                GridLines = true
-            };
-            lsvServices.Columns.Add("Service Name", 150);
-            lsvServices.Columns.Add("Pricing Type", 140);
-            lsvServices.Columns.Add("Fee", 120, HorizontalAlignment.Right);
-            lsvServices.Columns.Add("Multiplier", 120, HorizontalAlignment.Right);
-            lsvServices.SelectedIndexChanged += lsvServices_SelectedIndexChanged;
-            Controls.Add(lsvServices);
-
-            // --- Name ---
-            int formY = 240;
-
-            lblName = new Label 
-            {
-                Text = "Service Name:", 
-                Location = new Point(15, formY), 
-                AutoSize = true 
-            };
-            Controls.Add(lblName);
-
-            txtName = new TextBox 
-            { 
-                Location = new Point(120, formY - 3), 
-                Size = new Size(150, 23) 
-            };
-            Controls.Add(txtName);
-
-            // --- Pricing Type ---
-            lblPricingType = new Label 
-            { 
-                Text = "Pricing Type:", 
-                Location = new Point(15, formY + 35), 
-                AutoSize = true 
-            };
-            Controls.Add(lblPricingType);
-
-            cmbPricingType = new ComboBox 
-            { 
-                Location = new Point(120, formY + 32), 
-                Size = new Size(150, 23), 
-                DropDownStyle = ComboBoxStyle.DropDownList 
-            };
+            InitializeComponent();
             cmbPricingType.Items.Add(ServicePricingType.FixedPrice);
             cmbPricingType.Items.Add(ServicePricingType.ManualInput);
             cmbPricingType.Items.Add(ServicePricingType.VehicleBaseFeeMultiplier);
-            cmbPricingType.SelectedIndexChanged += cmbPricingType_SelectedIndexChanged;
-            Controls.Add(cmbPricingType);
-
-            // --- Fee ---
-            lblFee = new Label 
-            { 
-                Text = "Fee:", 
-                Location = new Point(15, formY + 70), 
-                AutoSize = true 
-            };
-            Controls.Add(lblFee);
-
-            txtFee = new TextBox 
-            { 
-                Location = new Point(120, formY + 67), 
-                Size = new Size(150, 23), 
-                Text = "0.00" // Default value, it will only be change if the pricing type is Fixed.
-            };
-            Controls.Add(txtFee);
-
-
-            // --- Multiplier ---
-            lblMultiplier = new Label 
-            { 
-                Text = "Multiplier:", 
-                Location = new Point(15, formY + 105), 
-                AutoSize = true 
-            };
-            Controls.Add (lblMultiplier);
-
-            txtMultiplier = new TextBox 
-            { 
-                Location = new Point(120, formY + 102), 
-                Size = new Size(150, 23), 
-                Text = "1" 
-            };
-            Controls.Add(txtMultiplier);
-
-            // --- Add Button ---
-            int btnY = 237;
-
-            btnAdd = new Button 
-            { 
-                Text = "Add New", 
-                Location = new Point(300, btnY), 
-                Size = new Size(120, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnAdd.Click += btnAdd_Click;
-            Controls.Add(btnAdd);
-
-            // --- Update Button ---
-            btnUpdate = new Button 
-            { 
-                Text = "Update Selected", 
-                Location = new Point(435, btnY), 
-                Size = new Size(120, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnUpdate.Click += btnUpdate_Click;
-            Controls.Add(btnUpdate);
-
-            // --- Delete Button ---
-            btnDelete = new Button 
-            { 
-                Text = "Delete Selected", 
-                Location = new Point(435, btnY + 80), 
-                Size = new Size(120, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(240, 128, 128),
-                ForeColor = Color.White
-            };
-            btnDelete.Click += btnDelete_Click;
-            Controls.Add(btnDelete);
-
-            // --- Clear Button ---
-            btnClear = new Button 
-            { 
-                Text = "Clear Form", 
-                Location = new Point(300, btnY + 40), 
-                Size = new Size(120, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnClear.Click += btnClear_Click;
-            Controls.Add(btnClear);
-
             ClearForm();
+            LoadServiceList();
         }
 
         // Method to load services into the ListView.

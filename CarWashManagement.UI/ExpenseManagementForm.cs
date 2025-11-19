@@ -13,16 +13,8 @@ using System.Windows.Forms;
 namespace CarWashManagement.UI
 {
     // Form that allows admin to manage expenses.
-    public class ExpenseManagementForm : BaseForm
+    public partial class ExpenseManagementForm : BaseForm
     {
-        private ListView lsvExpenses;
-        private Label lblDescription;
-        private TextBox txtDescription;
-        private Label lblAmount;
-        private TextBox txtAmount;
-        private Label lblDate;
-        private DateTimePicker dtpExpenseDate;
-        private Button btnAddExpense;
 
         private readonly User loggedInUser;
 
@@ -37,94 +29,8 @@ namespace CarWashManagement.UI
                 new AuditFileHandler()
                 );
 
-            SetUpControls();
+            InitializeComponent();
             LoadExpenseList();
-        }
-
-        // Method to set up the form and its controls.
-        public void SetUpControls()
-        {
-            Text = "Expense Management";
-            Size = new Size(500, 390);
-
-            // --- Expense List View ---
-            lsvExpenses = new ListView
-            {
-                Location = new Point(15, 15),
-                Size = new Size(450, 200),
-                View = View.Details,
-                FullRowSelect = true,
-                GridLines = true
-            };
-            lsvExpenses.Columns.Add("Date", 100);
-            lsvExpenses.Columns.Add("Description", 230);
-            lsvExpenses.Columns.Add("Amount", 100, HorizontalAlignment.Right);
-            Controls.Add(lsvExpenses);
-
-            int formY = 230;
-
-            // --- Date ---
-            lblDate = new Label
-            {
-                Text = "Date:",
-                Location = new Point(15, formY),
-                AutoSize = true
-            };
-            Controls.Add(lblDate);
-
-            dtpExpenseDate = new DateTimePicker
-            {
-                Location = new Point(15, formY + 20),
-                Size = new Size(200, 23),
-                Format = DateTimePickerFormat.Short
-            };
-            Controls.Add(dtpExpenseDate);
-
-            // --- Description ---
-            lblDescription = new Label
-            {
-                Text = "Description:",
-                Location = new Point(15, formY + 50),
-                AutoSize = true
-            };
-            Controls.Add(lblDescription);
-
-            txtDescription = new TextBox
-            {
-                Location = new Point(15, formY + 70),
-                Size = new Size(300, 23)
-            };
-            Controls.Add(txtDescription);
-
-            // --- Amount ---
-            lblAmount = new Label
-            {
-                Text = "Amount:",
-                Location = new Point(330, formY),
-                AutoSize = true
-            };
-            Controls.Add(lblAmount);
-
-            txtAmount = new TextBox
-            {
-                Location = new Point(330, formY + 20),
-                Size = new Size(135, 23),
-                TextAlign = HorizontalAlignment.Right
-            };
-            Controls.Add(txtAmount);
-
-            // --- Add Expense Button ---
-            btnAddExpense = new Button
-            {
-                Text = "Add Expense",
-                Location = new Point(330, formY + 70),
-                Size = new Size(135, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnAddExpense.Click += btnAddExpense_Click;
-            Controls.Add(btnAddExpense);
         }
 
         // Load all expenses from the manager into the ListView.

@@ -12,20 +12,9 @@ using CarWashManagement.UI.Properties;
 
 namespace CarWashManagement.UI
 {
-    public class LoginForm : BaseForm 
+    public partial class LoginForm : BaseForm 
     {
         private readonly AccountManager accountManager;
-
-        // Declaration of the UI control variables.
-        private PictureBox loginPicture;
-        private Label lblLogin;
-        private Label lblInfo;
-        private Label lblUsername;
-        private TextBox txtUsername;
-        private Label lblPassword;
-        private TextBox txtPassword;
-        private PictureBox eyeIcon;
-        private Button btnLogin;
 
         public LoginForm()
         {
@@ -34,123 +23,7 @@ namespace CarWashManagement.UI
 
             accountManager = new AccountManager(userFileHandler, auditFileHandler);
 
-            SetUpControls();
-        }
-
-        // Method to create and position all UI controls.
-        private void SetUpControls()
-        {
-            // - - - - - Form set up - - - - -
-            Text = "Car Wash Management - Login";
-            Size = new Size(700, 560);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "LoginForm";
-
-            // --- Login Picture ---
-            loginPicture = new PictureBox
-            {
-                Image = Resources.login_image,
-                Location = new Point(0, 0),
-                Size = new Size(300, 530),
-                SizeMode = PictureBoxSizeMode.Zoom
-            };
-            Controls.Add(loginPicture);
-
-            // --- Login Label ---
-            lblLogin = new Label
-            {
-                Text = "Login to your account",
-                Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                ForeColor = Color.FromArgb(41, 128, 185),
-                Location = new Point(340, 100),
-                AutoSize = true
-            };
-            Controls.Add(lblLogin);
-
-            // --- Username ---
-            lblUsername = new Label
-            {
-                Text = "Username: ",
-                Location = new Point(340, 160),
-                Font = new Font("Segoe UI", 12),
-                AutoSize = true
-            };
-            Controls.Add(lblUsername);
-
-            txtUsername = new TextBox
-            {
-                Location = new Point(340, 190),
-                Multiline = true,
-                Height = 30,
-                Width = 270,
-                WordWrap = false,
-                ScrollBars = ScrollBars.None,
-                Font = new Font("Segoe UI", 12),
-                BorderStyle = BorderStyle.None,
-            };
-            Controls.Add(txtUsername);
-
-            // --- Password ---
-            lblPassword = new Label
-            {
-                Text = "Password:",
-                Location = new Point(340, 230),
-                Font = new Font("Segoe UI", 12),
-                AutoSize = true,
-            };
-            Controls.Add(lblPassword);
-
-            txtPassword = new TextBox
-            {
-                Location = new Point(340, 260),
-                Multiline = true,
-                Height = 30,
-                Width = 270,
-                WordWrap = false,
-                ScrollBars = ScrollBars.None,
-                Font = new Font("Segoe UI", 12),
-                PasswordChar = '•',
-                BorderStyle = BorderStyle.None,
-            };
-            Controls.Add(txtPassword);
-
-            // --- Eye Icon ---
-            eyeIcon = new PictureBox
-            {
-                Image = Resources.eye_hide,
-                Location = new Point(620, 260),
-                Size = new Size(30, 30),
-                SizeMode = PictureBoxSizeMode.Zoom
-            };
-            eyeIcon.Click += eyeIcon_Click;
-            Controls.Add(eyeIcon);
-
-            // --- Login Button ---
-            btnLogin = new Button
-            {
-                Text = "LOGIN",
-                Font = new Font("Segoe UI", 12),
-                Location = new Point(340, 320),
-                Size = new Size(100, 40),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnLogin.FlatAppearance.BorderSize = 0;
-            btnLogin.Click += btnLogin_Click;
-            Controls.Add(btnLogin);
-
-            Label lblInfo = new Label
-            {
-                Text = "No account yet? Ask an administrator to create an account for you.",
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.Gray,
-                TextAlign = ContentAlignment.MiddleCenter,
-                AutoSize = false,
-                Size = new Size(300, 100),
-                Location = new Point(340, 420),
-            }; 
-            Controls.Add(lblInfo);
+            InitializeComponent();
         }
 
         // Method that is executed when the login button is clicked.

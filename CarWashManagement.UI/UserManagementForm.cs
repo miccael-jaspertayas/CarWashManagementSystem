@@ -12,19 +12,8 @@ using CarWashManagement.Core.FileHandlers;
 namespace CarWashManagement.UI
 {
     // Form that allows admin to create, unlock, activate, and deactivate accounts.
-    public class UserManagementForm : BaseForm
+    public partial class UserManagementForm : BaseForm
     {
-        private ListView lsvUsers;
-        private Label lblUsername;
-        private TextBox txtUsername;
-        private Label lblPassword;
-        private TextBox txtPassword;
-        private Label lblFullName;
-        private TextBox txtFullName;
-        private Label lblRole;
-        private ComboBox cmbRole;
-        private Button btnCreateUser;
-        private Button btnToggleStatus;
 
         private readonly AccountManager accountManager;
 
@@ -33,130 +22,11 @@ namespace CarWashManagement.UI
             accountManager = new AccountManager(
                 new UserFileHandler(),
                 new AuditFileHandler()
-                );
+            );
 
-            SetUpControls();
-            LoadUserList();
-        }
-
-        // Method to set up the form and its controls.
-        public void SetUpControls()
-        {
-            Text = "User Management";
-            Size = new Size(600, 350);
-
-            // --- User List View ---
-            lsvUsers = new ListView
-            {
-                Location = new Point(15, 15),
-                Size = new Size(550, 200),
-                View = View.Details,
-                FullRowSelect = true
-            };
-            lsvUsers.Columns.Add("Username", 100);
-            lsvUsers.Columns.Add("Full Name", 150);
-            lsvUsers.Columns.Add("Role", 80);
-            lsvUsers.Columns.Add("Status", 80);
-            lsvUsers.Columns.Add("Failed Attempts", 110);
-            Controls.Add(lsvUsers);
-
-            // - - - - - Account Creation Controls - - - - -
-
-            int formY = 230;
-
-            // --- Username ---
-            lblUsername = new Label
-            {
-                Text = "Username:",
-                Location = new Point(15, formY),
-                AutoSize = true
-            };
-            Controls.Add(lblUsername);
-
-            txtUsername = new TextBox
-            {
-                Location = new Point(80, formY - 3),
-                Size = new Size(120, 23)
-            };
-            Controls.Add(txtUsername);
-
-            // --- Password ---
-            lblPassword = new Label
-            {
-                Text = "Password:",
-                Location = new Point(215, formY),
-                AutoSize = true
-            };
-            Controls.Add(lblPassword);
-
-            txtPassword = new TextBox
-            {
-                Location = new Point(280, formY - 3),
-                Size = new Size(120, 23),
-                PasswordChar = '*'
-            };
-            Controls.Add(txtPassword);
-
-            // --- Full Name ---
-            lblFullName = new Label
-            {
-                Text = "Full Name:",
-                Location = new Point(15, formY + 30),
-                AutoSize = true
-            };
-            Controls.Add(lblFullName);
-
-            txtFullName = new TextBox
-            {
-                Location = new Point(80, formY + 27),
-                Size = new Size(120, 23)
-            };
-            Controls.Add(txtFullName);
-
-            // --- Role ---
-            lblRole = new Label
-            {
-                Text = "Role:",
-                Location = new Point(215, formY + 30),
-                AutoSize = true
-            };
-            Controls.Add(lblRole);
-
-            cmbRole = new ComboBox
-            {
-                Location = new Point(280, formY + 27),
-                Size = new Size(120, 23),
-                DropDownStyle = ComboBoxStyle.DropDownList
-            };
-            cmbRole.Items.Add("Admin");
-            cmbRole.Items.Add("Recorder");
+            InitializeComponent();
             cmbRole.SelectedIndex = 1; // Default to Recorder
-            Controls.Add(cmbRole);
-
-            // --- Buttons ---
-            btnCreateUser = new Button
-            {
-                Text = "Create User",
-                Location = new Point(420, formY),
-                Size = new Size(140, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnCreateUser.Click += btnCreateUser_Click;
-            Controls.Add(btnCreateUser);
-
-            btnToggleStatus = new Button
-            {
-                Text = "Activate / Deactivate Selected",
-                Location = new Point(420, formY + 30),
-                Size = new Size(140, 30),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(41, 128, 185),
-                ForeColor = Color.White
-            };
-            btnToggleStatus.Click += btnToggleStatus_Click;
-            Controls.Add(btnToggleStatus);
+            LoadUserList();
         }
 
         // Method to load all users using the account manager into the ListView.
