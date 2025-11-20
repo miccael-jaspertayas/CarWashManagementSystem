@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,10 +53,13 @@
     <Compile Include="Database\SqlHandlers\VehicleSqlHandler.cs" />
     <Compile Include="Enums\ServicePricingType.cs" />
     <Compile Include="Expense.cs" />
+    <Compile Include="Features\PasswordStrengthEvaluator.cs" />
+    <Compile Include="Features\StrengthLevel.cs" />
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\CarManager.cs" />
     <Compile Include="Managers\ExpenseManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
+    <Compile Include="Features\PasswordRequirement.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />

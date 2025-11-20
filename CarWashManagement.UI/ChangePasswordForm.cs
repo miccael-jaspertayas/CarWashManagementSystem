@@ -11,6 +11,8 @@ namespace CarWashManagement.UI
 {
     public partial class ChangePasswordForm : BaseForm
     {
+        private readonly PasswordStrengthEvaluator _passwordEvaluator = new PasswordStrengthEvaluator();
+
         private readonly AccountManager accountManager;
         private readonly User loggedInUser;
 
@@ -117,51 +119,18 @@ namespace CarWashManagement.UI
 
         private void UpdatePasswordStrength(string password)
         {
-            int strength = 0;
-            string strengthText = "";
-            Color strengthColor = weakColor;
+            // 1. Get the evaluation result from our decoupled logic class.
+            var (score, level) = _passwordEvaluator.Evaluate(password);
 
-            // Check criteria
-            if (password.Length >= 8) strength++;
-            if (password.Any(char.IsUpper)) strength++;
-            if (password.Any(char.IsLower)) strength++;
-            if (password.Any(char.IsDigit)) strength++;
-            if (password.Any(ch => !char.IsLetterOrDigit(ch))) strength++;
+            // 2. Update the UI. This method's only job is to display things.
+            progressStrength.Maximum = _passwordEvaluator.MaxScore;
+            progressStrength.Value = score;
 
-            // Update progress bar and label
-            progressStrength.Value = strength;
+            lblPasswordStrength.Text = $"Password Strength: {level.Text}";
+            lblPasswordStrength.ForeColor = level.Color;
 
-            switch (strength)
-            {
-                case 0:
-                case 1:
-                    strengthText = "Very Weak";
-                    strengthColor = weakColor;
-                    break;
-                case 2:
-                    strengthText = "Weak";
-                    strengthColor = weakColor;
-                    break;
-                case 3:
-                    strengthText = "Medium";
-                    strengthColor = mediumColor;
-                    break;
-                case 4:
-                    strengthText = "Strong";
-                    strengthColor = strongColor;
-                    break;
-                case 5:
-                    strengthText = "Very Strong";
-                    strengthColor = successColor;
-                    break;
-            }
-
-            progressStrength.ForeColor = strengthColor;
-            lblPasswordStrength.Text = $"Password Strength: {strengthText}";
-            lblPasswordStrength.ForeColor = strengthColor;
-
-            // Animate progress bar color change
-            AnimateProgressBarColor(strengthColor);
+            // Animate the progress bar with the color from the strength level.
+            AnimateProgressBarColor(level.Color);
         }
 
         private void AnimateProgressBarColor(Color targetColor)
@@ -341,20 +310,10 @@ namespace CarWashManagement.UI
 
         private void ShowSuccessMessage()
         {
-            // Visual feedback for success
-            btnSubmit.BackColor = successColor;
-            btnSubmit.Text = "✓ Success!";
-
-            Timer messageTimer = new Timer();
-            messageTimer.Interval = 1500;
-            messageTimer.Tick += (s, args) =>
-            {
-                MessageBox.Show("Đã đổi mật khẩu.", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                messageTimer.Stop();
-                this.Close();
-            };
-            messageTimer.Start();
+            // 1. Show the confirmation dialog immediately.
+            MessageBox.Show("Đã đổi mật khẩu.", "Thành công",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void ShowErrorMessage()
