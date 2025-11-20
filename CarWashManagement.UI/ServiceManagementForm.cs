@@ -57,7 +57,14 @@ namespace CarWashManagement.UI
         {
             lsvServices.SelectedItems.Clear();
             txtName.Clear();
-            cmbPricingType.SelectedIndex = 0;
+            if (cmbPricingType.Items.Count > 0)
+            {
+                cmbPricingType.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbPricingType.SelectedIndex = -1;
+            }
             txtFee.Text = "0.00";
             txtMultiplier.Text = "1";
 
