@@ -1,4 +1,4 @@
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace CarWashManagement.UI
@@ -31,6 +31,7 @@ namespace CarWashManagement.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePasswordForm));
             this.lblOldPassword = new System.Windows.Forms.Label();
             this.txtOldPassword = new System.Windows.Forms.TextBox();
             this.lblNewPassword = new System.Windows.Forms.Label();
@@ -57,9 +58,9 @@ namespace CarWashManagement.UI
             this.lblOldPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblOldPassword.Location = new System.Drawing.Point(25, 85);
             this.lblOldPassword.Name = "lblOldPassword";
-            this.lblOldPassword.Size = new System.Drawing.Size(82, 15);
+            this.lblOldPassword.Size = new System.Drawing.Size(77, 15);
             this.lblOldPassword.TabIndex = 0;
-            this.lblOldPassword.Text = "Old Password:";
+            this.lblOldPassword.Text = "Mật Khẩu cũ:";
             // 
             // txtOldPassword
             // 
@@ -81,9 +82,9 @@ namespace CarWashManagement.UI
             this.lblNewPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblNewPassword.Location = new System.Drawing.Point(25, 140);
             this.lblNewPassword.Name = "lblNewPassword";
-            this.lblNewPassword.Size = new System.Drawing.Size(88, 15);
+            this.lblNewPassword.Size = new System.Drawing.Size(85, 15);
             this.lblNewPassword.TabIndex = 2;
-            this.lblNewPassword.Text = "New Password:";
+            this.lblNewPassword.Text = "Mật Khẩu mới:";
             // 
             // txtNewPassword
             // 
@@ -106,9 +107,9 @@ namespace CarWashManagement.UI
             this.lblConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblConfirmPassword.Location = new System.Drawing.Point(25, 195);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(107, 15);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(131, 15);
             this.lblConfirmPassword.TabIndex = 4;
-            this.lblConfirmPassword.Text = "Confirm Password:";
+            this.lblConfirmPassword.Text = "Nhập lại mật khẩu mới:";
             // 
             // txtConfirmPassword
             // 
@@ -132,15 +133,15 @@ namespace CarWashManagement.UI
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(153, 290);
+            this.btnSubmit.Location = new System.Drawing.Point(142, 290);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 32);
+            this.btnSubmit.Size = new System.Drawing.Size(86, 32);
             this.btnSubmit.TabIndex = 4;
-            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Text = "Hoàn thành";
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             this.btnSubmit.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.btnSubmit.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -155,11 +156,11 @@ namespace CarWashManagement.UI
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 32);
             this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Hủy bỏ";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.btnCancel.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panelHeader
             // 
@@ -179,13 +180,12 @@ namespace CarWashManagement.UI
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(50, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(142, 21);
+            this.lblTitle.Size = new System.Drawing.Size(114, 21);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Change Password";
+            this.lblTitle.Text = "Đổi Mật Khẩu";
             // 
             // pictureBox1
             // 
-
             this.pictureBox1.Location = new System.Drawing.Point(15, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 30);
@@ -210,9 +210,9 @@ namespace CarWashManagement.UI
             this.lblPasswordStrength.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblPasswordStrength.Location = new System.Drawing.Point(3, 3);
             this.lblPasswordStrength.Name = "lblPasswordStrength";
-            this.lblPasswordStrength.Size = new System.Drawing.Size(102, 13);
+            this.lblPasswordStrength.Size = new System.Drawing.Size(61, 13);
             this.lblPasswordStrength.TabIndex = 1;
-            this.lblPasswordStrength.Text = "Password Strength:";
+            this.lblPasswordStrength.Text = "Độ tin cậy:";
             // 
             // progressStrength
             // 
@@ -241,9 +241,7 @@ namespace CarWashManagement.UI
             this.Controls.Add(this.txtOldPassword);
             this.Controls.Add(this.lblOldPassword);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Change Password";

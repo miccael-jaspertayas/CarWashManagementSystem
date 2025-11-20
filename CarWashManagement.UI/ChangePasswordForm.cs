@@ -244,7 +244,7 @@ namespace CarWashManagement.UI
 
             if (!isValid)
             {
-                MessageBox.Show("All fields are required.", "Input Error",
+                MessageBox.Show("Phải nhập đủ thông tin!", "Input Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -256,11 +256,11 @@ namespace CarWashManagement.UI
 
             if (newPassword.Length < 8 || !hasUpper || !hasLower || !hasDigit)
             {
-                string message = "Password must meet the following requirements:\n" +
-                                 "• At least 8 characters long\n" +
-                                 "• Contains at least one uppercase letter\n" +
-                                 "• Contains at least one lowercase letter\n" +
-                                 "• Contains at least one digit\n";
+                string message = "Yêu cầu về mật khẩu:\n" +
+                                  "• Độ dài tối thiểu 8 ký tự\n" +
+                                  "• Bao gồm ít nhất một chữ hoa (A-Z)\n" +
+                                  "• Bao gồm ít nhất một chữ thường (a-z)\n" +
+                                  "• Bao gồm ít nhất một chữ số (0-9)";
 
                 MessageBox.Show(message, "Password Requirements",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -271,7 +271,7 @@ namespace CarWashManagement.UI
             // Check password match
             if (newPassword != confirmPassword)
             {
-                MessageBox.Show("The new passwords do not match.", "Input Error",
+                MessageBox.Show("Mật khẩu xác nhận và mật khẩu mới không trùng khớp!", "Input Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 HighlightError(txtConfirmPassword);
                 return false;
@@ -349,7 +349,7 @@ namespace CarWashManagement.UI
             messageTimer.Interval = 1500;
             messageTimer.Tick += (s, args) =>
             {
-                MessageBox.Show("Password changed successfully.", "Success",
+                MessageBox.Show("Đã đổi mật khẩu.", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 messageTimer.Stop();
                 this.Close();
@@ -359,7 +359,7 @@ namespace CarWashManagement.UI
 
         private void ShowErrorMessage()
         {
-            MessageBox.Show("The 'Old Password' was incorrect. Please try again.",
+            MessageBox.Show("Mật khẩu cũ không đúng.",
                 "Authentication Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             txtOldPassword.Clear();

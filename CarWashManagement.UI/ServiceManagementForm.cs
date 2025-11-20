@@ -98,7 +98,7 @@ namespace CarWashManagement.UI
 
             if (cmbPricingType.SelectedItem == null)
             {
-                MessageBox.Show("Please select a pricing type.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa chọn loại giá.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -108,7 +108,7 @@ namespace CarWashManagement.UI
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                MessageBox.Show("Service Name is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Yêu cầu tên dịch vụ.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -116,7 +116,7 @@ namespace CarWashManagement.UI
             {
                 if (!decimal.TryParse(txtFee.Text, out fee) || fee <= 0)
                 {
-                    MessageBox.Show("Fee must be a valid number greater than 0.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Giá cả phải là 1 số lớn hơn 0.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -124,7 +124,7 @@ namespace CarWashManagement.UI
             {
                 if (!int.TryParse(txtMultiplier.Text, out multiplier) || multiplier <= 0)
                 {
-                    MessageBox.Show("Multiplier must be a valid integer greater than 0.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Hệ số nhân phải là 1 số lớn hơn 0.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -194,12 +194,12 @@ namespace CarWashManagement.UI
 
             if (success)
             {
-                MessageBox.Show("Service added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đã thêm dịch vụ.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadServiceList();
             }
             else
             {
-                MessageBox.Show("A service with this name already exists.", "Creation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Loại dịch vụ này đã tồn tại.", "Creation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -212,7 +212,7 @@ namespace CarWashManagement.UI
             }
 
             carManager.UpdateService(updatedService, loggedInUser.Username);
-            MessageBox.Show("Service updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Cập nhật dịch vụ thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadServiceList();
         }
 
@@ -220,12 +220,12 @@ namespace CarWashManagement.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string serviceName = txtName.Text;
-            var result = MessageBox.Show($"Are you sure you want to delete '{serviceName}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show($"Bạn muốn xóa '{serviceName}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
                 carManager.DeleteService(serviceName, loggedInUser.Username);
-                MessageBox.Show("Service deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Xóa dịch vụ thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadServiceList();
             }
         }

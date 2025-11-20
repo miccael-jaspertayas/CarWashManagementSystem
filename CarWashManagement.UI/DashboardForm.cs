@@ -1,4 +1,4 @@
-using CarWashManagement.Core;
+﻿using CarWashManagement.Core;
 using CarWashManagement.Core.Enums;
 using CarWashManagement.Core.Database.SqlHandlers;
 using CarWashManagement.Core.Managers;
@@ -57,8 +57,6 @@ namespace CarWashManagement.UI
             if (loggedInUser.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
             {
                 adminMenuItem.Visible = true;
-                btnChangePassword.Location = new System.Drawing.Point(535, 5);
-                logoutButton.Location = new System.Drawing.Point(665, 5);
             }
         }
 
@@ -354,7 +352,7 @@ namespace CarWashManagement.UI
         // Method that allow users to logout from the main dashboard.
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            DialogResult isLogout = MessageBox.Show("Are you sure you want to log out?", "Logout?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult isLogout = MessageBox.Show("Bạn muốn đăng xuất?", "Logout?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (isLogout == DialogResult.Yes)
             {
@@ -381,7 +379,7 @@ namespace CarWashManagement.UI
             // Check if any item is selected in the ListView.
             if (lsvTodayEntries.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a transaction row to toggle its Paid Status.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Xin hãy chọn một hàng để thay đổi trạng thái Trả phí.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -397,7 +395,7 @@ namespace CarWashManagement.UI
 
                 if (txnToUpdate == null)
                 {
-                    MessageBox.Show("Transaction not found. Please refresh the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không tìm thấy phiếu hóa đơn, xin hãy làm mới danh mục.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -415,7 +413,7 @@ namespace CarWashManagement.UI
         {
             if (lsvTodayEntries.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a transaction row to toggle its Wash Status.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Xin hãy chọn một hàng để thay đổi trạng thái Rửa.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -429,7 +427,7 @@ namespace CarWashManagement.UI
 
                 if (txnToUpdate == null)
                 {
-                    MessageBox.Show("Transaction not found. Please refresh the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không tìm thấy phiếu hóa đơn, xin hãy làm mới danh mục.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -445,13 +443,13 @@ namespace CarWashManagement.UI
         {
             if (txtEmployeeName.Text.Trim() == "")
             {
-                MessageBox.Show("Please enter the employee name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa nhập tên nhân viên!", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (cmbVehicleType.SelectedIndex == -1)
             {
-                MessageBox.Show("Please select a vehicle type.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa chọn loại xe", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -466,7 +464,7 @@ namespace CarWashManagement.UI
 
                         if (txt == null || !decimal.TryParse(txt.Text, out decimal manualFee) || manualFee <= 0)
                         {
-                            MessageBox.Show($"Please enter a valid fee for the service: {service.Name}", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"phí dịch vụ không hợp lệ: {service.Name}", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
@@ -508,7 +506,7 @@ namespace CarWashManagement.UI
 
             if (!decimal.TryParse(txtTotalAmount.Text, out decimal totalAmount) || totalAmount <= 0)
             {
-                MessageBox.Show("Total amount must be greater than zero. Please check vehicle selection and services.", "Invalid Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tổng chi phí phải lớn hơn 0.", "Invalid Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -524,14 +522,14 @@ namespace CarWashManagement.UI
                     loggedInUser.Username
                     );
 
-                MessageBox.Show($"Transaction {newTransaction.ID} added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Hóa đơn {newTransaction.ID} đã được thêm!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ResetWashEntryForm();
                 RefreshTodaysEntries();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while saving the transaction: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Có lỗi xảy ra khi lưu hóa đơn: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -629,7 +627,7 @@ namespace CarWashManagement.UI
                 loginForm.Show();
             }
 
-            Console.WriteLine("Car Wash Management System\nMiccael Jasper Tayas\nFinal Project Requirement\nCIS202 - Object Oriented Programming\nNovember 2025\n\nThank you for using the system!");
+            Console.WriteLine("Car Wash Management System\nGROUP 7 - CNTTVA2\nFinal Project\nNovember 2025\n\nThank you for using the system!");
         }
 
         private void mainMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

@@ -61,10 +61,10 @@ namespace CarWashManagement.Core.Managers
             {
                 List<Service> defaults = new List<Service>
                 {
-                    new Service("Wax", 0.00m, ServicePricingType.VehicleBaseFeeMultiplier, 1),
-                    new Service("Acid Rain Remover", 0.00m, ServicePricingType.ManualInput),
-                    new Service("Buffing", 0.00m, ServicePricingType.ManualInput),
-                    new Service("Back to Zero", 0.00m, ServicePricingType.ManualInput)
+                    new Service("Phủ sáp", 0.00m, ServicePricingType.VehicleBaseFeeMultiplier, 1),
+                    new Service("Tẩy cặn canxi", 0.00m, ServicePricingType.ManualInput),
+                    new Service("Đánh bóng", 0.00m, ServicePricingType.ManualInput),
+                    new Service("Khử mùi diệt khuẩn", 0.00m, ServicePricingType.ManualInput)
                 };
 
                 serviceSqlHandler.Save(defaults);

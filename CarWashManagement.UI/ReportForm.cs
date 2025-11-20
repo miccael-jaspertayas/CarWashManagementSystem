@@ -1,4 +1,4 @@
-using CarWashManagement.Core;
+﻿using CarWashManagement.Core;
 using CarWashManagement.Core.Database.SqlHandlers;
 using CarWashManagement.Core.Managers;
 using System;
@@ -32,7 +32,7 @@ namespace CarWashManagement.UI
         private void btnMonthlyToggle_Click(object sender, EventArgs e)
         {
             currentReportMode = ReportMode.Monthly;
-            lblSelectMonth.Text = "Select Month:";
+            lblSelectMonth.Text = "Chọn Tháng:";
             dtpReportDate.CustomFormat = "MMMM yyyy";
 
             btnMonthlyToggle.BackColor = Color.FromArgb(41, 128, 185);
@@ -54,7 +54,7 @@ namespace CarWashManagement.UI
         private void btnYearlyToggle_Click(object sender, EventArgs e)
         {
             currentReportMode = ReportMode.Yearly;
-            lblSelectMonth.Text = "Select Year:";
+            lblSelectMonth.Text = "Chọn Năm:";
             dtpReportDate.CustomFormat = "yyyy";
 
             btnYearlyToggle.BackColor = Color.FromArgb(41, 128, 185);
