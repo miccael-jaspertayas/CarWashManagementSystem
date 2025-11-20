@@ -523,6 +523,7 @@ namespace CarWashManagement.UI
             this.txtEmployeeName.Location = new System.Drawing.Point(117, 9);
             this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmployeeName.Name = "txtEmployeeName";
+            this.txtEmployeeName.ReadOnly = true;
             this.txtEmployeeName.Size = new System.Drawing.Size(198, 23);
             this.txtEmployeeName.TabIndex = 1;
             // 

@@ -52,6 +52,7 @@ namespace CarWashManagement.UI
 
             // Set welcome label text
             welcomeLabel.Text = $"Welcome, {loggedInUser.FullName} ({loggedInUser.Role})";
+            txtEmployeeName.Text = loggedInUser.FullName;
 
             // Adjust button positions for admin
             if (loggedInUser.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
